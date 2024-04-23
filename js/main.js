@@ -5,10 +5,18 @@
 
 // console.log(await getAllOfficesFromSpainCityAndMovil());
 
+// import {
+//     getAllEmployeesWithBossAndCodeSever,
+//     getBossFullNameAndEmail,
+//     getAll
+// } from "./module/employees.js";
+
+// console.log(await getAll());
+
+
 import {
-    getAllEmployeesWithBossAndCodeSever,
-    getBossFullNameAndEmail,
+    getAllClientsSpain,
     getAll
-} from "./module/employees.js";
+} from "./module/clients.js";
 
 console.log(await getAll());

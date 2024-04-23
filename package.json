@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch js/main.js",
-    "clients": "json-server js/db/client.json -p 5501 ",
+    "clients": "json-server js/db/clients.json -p 5501 ",
     "employees": "json-server js/db/employees.json -p 5502 ",
     "gama": "json-server js/db/gaman.json -p 5503",
     "offices": "json-server js/db/offices.json -p 5504",
