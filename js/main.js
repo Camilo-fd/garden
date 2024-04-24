@@ -14,7 +14,13 @@
 // } from "./module/clients.js";
 
 import {
+    getAllStatusOrder,
+    getOrdersClientsExpectedDateAndDelivery,
     getAll
 } from "./module/requests.js";
+
+// import {
+//     getAllPay2008
+// } from "./module/payments.js"
 
 console.log(await getAll());
