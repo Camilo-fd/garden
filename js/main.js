@@ -9,9 +9,10 @@
 //     getAll
 // } from "./module/employees.js";
 
-// import {
-//     getAllClientsSpain,
-// } from "./module/clients.js";
+import {
+    getAllClientsSpain,
+    getAllClientsMadridAndRepresentative
+} from "./module/clients.js";
 
 // import {
 //     getAllStatusOrder,
@@ -27,8 +28,8 @@
 //     getAll
 // } from "./module/payments.js"
 
-import {
-    getAll
-} from "./module/product.js"
+// import {
+//     getProductGamaAnd100Units
+// } from "./module/product.js"
 
-console.log(await getAll());
+console.log(await getAllClientsMadridAndRepresentative());
