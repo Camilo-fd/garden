@@ -13,14 +13,22 @@
 //     getAllClientsSpain,
 // } from "./module/clients.js";
 
-import {
-    getAllStatusOrder,
-    getOrdersClientsExpectedDateAndDelivery,
-    getAll
-} from "./module/requests.js";
+// import {
+//     getAllStatusOrder,
+//     getOrdersClientsExpectedDateAndDelivery,
+//     getOrdersClientsExpectedDateAndDeliveryBeforeDate,
+//     getrejectedRequestsIn2009,
+//     getDeliveryRequest
+// } from "./module/requests.js";
 
 // import {
-//     getAllPay2008
+//     getAllPay2008,
+//     getAllPayOptions,
+//     getAll
 // } from "./module/payments.js"
+
+import {
+    getAll
+} from "./module/product.js"
 
 console.log(await getAll());

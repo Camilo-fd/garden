@@ -1,26 +1,5 @@
 // 7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
 
-// export const getAll = async() => {
-//     let res = await fetch("http://localhost:5508/requests");
-//     let data = await res.json();
-//     let estadosUnicos = new Set();
-//     data.forEach(val => {
-//         estadosUnicos.add(val.status);
-//     });
-//     let combi = [...estadosUnicos].map(estado => ({ estado }))
-
-//     return combi;
-// }
-
-//     let dataUpdate = [];
-//     data.forEach(val => {
-//         dataUpdate.push({
-//             estado: val.status
-//         })
-//     })
-//     return dataUpdate;
-// }
-
 export const getAllStatusOrder = async () => {
     const res = await fetch("http://localhost:5508/requests");
     const data = await res.json();
@@ -57,30 +36,29 @@ export const getOrdersClientsExpectedDateAndDelivery = async() => {
 
 // OPCION 1.
 
-export const getAll = async() => {
+export const getOrdersClientsExpectedDateAndDeliveryBeforeDate = async() => {
     let res = await fetch("http://localhost:5508/requests?status=Entregado");
     let data = await res.json();
     let dataUpdate = [];
     data.forEach(val => {
         if (val.date_delivery == null) {
-            dataUpdate.push(
-                val.code_request,
-                val.code_client,
-                val.date_wait,
-                val.date_delivery
-            )
+            dataUpdate.push({
+                pedido: val.code_request,
+                codigo_cliente: val.code_client,
+                tiempo_espera: val.date_wait,
+                tiempo_llegada: val.date_delivery
+            });
             } else {
                 let delivery = val.date_delivery.split('-')[2];
                 let wait = val.date_wait.split('-')[2];
-                if ( Number( wait) - Number(delivery) >= 2){
+                let resta = delivery - wait
+                if (resta != 2){
                     dataUpdate.push({
                         pedido: val.code_request,
                         codigo_cliente: val.code_client,
                         tiempo_espera: val.date_wait,
                         tiempo_llegada: val.date_delivery
-
-                    }
-                    )
+                    })
                 }
             }
     })
@@ -89,19 +67,55 @@ export const getAll = async() => {
 
 // OPCION 2.
 
-// export const getAll = async() => {
-//     let res = await fetch("http://localhost:5508/requests");
-//     let data = await res.json();
-//     let dataUpdate = data.filter(val => (val.date_wait > val.date_delivery))
-//     .map(val => {
-//          return {
-//              pedido: val.code_request,
-//              codigo_cliente: val.code_client,
-//              tiempo_espera: val.date_wait,
-//              tiempo_llegada: val.date_delivery
-//          }
+export const getAll = async() => {
+    let res = await fetch("http://localhost:5508/requests");
+    let data = await res.json();
+    let dataUpdate = data.filter(val => (val.date_wait > val.date_delivery))
+    .map(val => {
+         return {
+             pedido: val.code_request,
+             codigo_cliente: val.code_client,
+             tiempo_espera: val.date_wait,
+             tiempo_llegada: val.date_delivery
+         }
 
-//     });
+    });
 
-//     return dataUpdate
-// }
+    return dataUpdate
+}
+
+// 11. Devuelve un listado de todos los pedidos que fueron **rechazados** en `2009`.
+
+export const getrejectedRequestsIn2009 = async()=>{
+    let res = await fetch("http://localhost:5508/requests?status=Rechazado")
+    let data = await res.json();
+    let dataUpdated = data.filter (val => (val.date_request != null && val.date_request[3] === "9"))
+    .map(val => {
+        return {
+            codigo_pedido: val.code_request, 
+            codigo_cliente:  val.code_client, 
+            tiempo_espera: val.date_wait, 
+            fecha_llegada: val.date_delivery,
+            estado: val.status
+        }
+    })
+    return dataUpdated;
+    }
+
+// 12. Devuelve un listado de todos los pedidos que han sido **entregados** en el mes de enero de cualquier año.
+
+export const getDeliveryRequest = async() => {
+    let res = await fetch("http://localhost:5508/requests?status=Entregado")
+    let data = await res.json();
+    let dataUpdated = data.filter (val => (val.date_delivery != null && val.date_delivery[5] === "0" && val.date_delivery[6] === "1"))
+    .map(val => {
+        return {
+            codigo_pedido: val.code_request, 
+            codigo_cliente: val.code_client, 
+            tiempo_espera: val.date_wait, 
+            fecha_llegada: val.date_delivery,
+            estado: val.status
+        }
+    })
+    return dataUpdated;
+}
