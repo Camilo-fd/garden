@@ -39,20 +39,26 @@ import{
 export const getClientAndSaleAgentFullName = async() => {
     let resClients = await fetch("http://localhost:5501/clients")
     let dataClients = await resClients.json()
-    let dataSaleAgents = await getEmployeesSaleAgent()
     let dataUpdated = []
 
-    dataClients.forEach(cliente => {
-        dataSaleAgents.forEach(agent => {
-            if (cliente.code_employee_sales_manager == agent.codigoEmpleado) {
-                dataUpdated.push({
-                    codigoCliente: cliente.client_code,
-                    nombreCliente: cliente.client_name,
-                    nombreRepresentante: agent.nombre,
-                    apellidosRepresentante: agent.apellidos
-                })
-            }
+    for ( let i = 0; i < dataClients.length ; i++){
+        let [employees] = await getEmployeesSaleAgent(dataClients[i].code_employee_sales_manager);
+        dataUpdated.push({
+            nombre: dataClients[i].client_name,
+            nombre_manager: `${employees.name} ${employees.lastname1} ${employees.lastname2}`
         })
-    })
+    }
     return dataUpdated
 }
+// dataClients.forEach(cliente => {
+//     dataSaleAgents.forEach(agent => {
+//         if (cliente.code_employee_sales_manager == agent.codigoEmpleado) {
+//             dataUpdated.push({
+//                 codigoCliente: cliente.client_code,
+//                 nombreCliente: cliente.client_name,
+//                 nombreRepresentante: agent.nombre,
+//                 apellidosRepresentante: agent.apellidos
+//             })
+//         }
+//     })
+// })

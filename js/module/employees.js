@@ -53,16 +53,8 @@ export const getAll = async() => {
 
 // SEGUIMIENTO DE LA PARTE 1:
 
-export const getEmployeesSaleAgent = async () => {
-    let res = await fetch("http://localhost:5502/employees?position=Representante%20Ventas")
+export const getEmployeesSaleAgent = async (code) => {
+    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`)
     let data = await res.json()
-    let dataUpdate = []
-    data.forEach(val => {
-        dataUpdate.push({
-            codigoEmpleado: val.employe_code,
-            nombre: val.name,
-            apellidos: `${val.lastname1} ${val.lastname2}`
-        });
-    });
-    return dataUpdate
+    return data
 }
