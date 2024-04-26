@@ -1,3 +1,8 @@
+import{
+    getEmployeesSaleAgent
+} from './employees.js'
+
+
 // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
 export const getAllClientsSpain = async() => {
@@ -32,10 +37,6 @@ export const getAllClientsMadridAndRepresentative = async() => {
 
 // 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 
-import{
-    getEmployeesSaleAgent
-} from './employees.js'
-
 export const getClientAndSaleAgentFullName = async() => {
     let resClients = await fetch("http://localhost:5501/clients")
     let dataClients = await resClients.json()
@@ -50,15 +51,3 @@ export const getClientAndSaleAgentFullName = async() => {
     }
     return dataUpdated
 }
-// dataClients.forEach(cliente => {
-//     dataSaleAgents.forEach(agent => {
-//         if (cliente.code_employee_sales_manager == agent.codigoEmpleado) {
-//             dataUpdated.push({
-//                 codigoCliente: cliente.client_code,
-//                 nombreCliente: cliente.client_name,
-//                 nombreRepresentante: agent.nombre,
-//                 apellidosRepresentante: agent.apellidos
-//             })
-//         }
-//     })
-// })
