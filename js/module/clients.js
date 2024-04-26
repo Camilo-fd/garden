@@ -27,3 +27,32 @@ export const getAllClientsMadridAndRepresentative = async() => {
     })
     return dataUpdate
 }
+
+// CONSULTAs PARTE 2.
+
+// 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
+import{
+    getEmployeesSaleAgent
+} from './employees.js'
+
+export const getClientAndSaleAgentFullName = async() => {
+    let resClients = await fetch("http://localhost:5501/clients")
+    let dataClients = await resClients.json()
+    let dataSaleAgents = await getEmployeesSaleAgent()
+    let dataUpdated = []
+
+    dataClients.forEach(cliente => {
+        dataSaleAgents.forEach(agent => {
+            if (cliente.code_employee_sales_manager == agent.codigoEmpleado) {
+                dataUpdated.push({
+                    codigoCliente: cliente.client_code,
+                    nombreCliente: cliente.client_name,
+                    nombreRepresentante: agent.nombre,
+                    apellidosRepresentante: agent.apellidos
+                })
+            }
+        })
+    })
+    return dataUpdated
+}

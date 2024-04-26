@@ -11,7 +11,8 @@
 
 import {
     getAllClientsSpain,
-    getAllClientsMadridAndRepresentative
+    getAllClientsMadridAndRepresentative,
+    getClientAndSaleAgentFullName
 } from "./module/clients.js";
 
 // import {
@@ -32,4 +33,4 @@ import {
 //     getProductGamaAnd100Units
 // } from "./module/product.js"
 
-console.log(await getAllClientsMadridAndRepresentative());
+console.log(await getClientAndSaleAgentFullName());
