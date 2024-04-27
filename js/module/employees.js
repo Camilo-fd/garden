@@ -7,7 +7,7 @@ export const getAllEmployeesWithBossAndCodeSever = async() => {
     data.forEach(val => {
         let [email] = val.email.match(/(?<=\[)[^\[\]]+@[^@\[\]]+(?=\])/)
         dataUpdate.push({
-            nombre: val.name,
+            nombre: val.apellidos,
             apellidos: `${val.lastname1} ${val.lastname2}`,
             email
         });

@@ -1,13 +1,13 @@
-import {
-    getAllOfficeCodeAndCity,
-    getAllOfficesFromSpainCityAndMovil
-} from "./module/offices.js";
-
 // import {
-//     getAllEmployeesWithBossAndCodeSever,
-//     getBossFullNameAndEmail,
-//     getAll
-// } from "./module/employees.js";
+//     getAllOfficeCodeAndCity,
+//     getAllOfficesFromSpainCityAndMovil
+// } from "./module/offices.js";
+
+import {
+    getAllEmployeesWithBossAndCodeSever,
+    getBossFullNameAndEmail,
+    getAll
+} from "./module/employees.js";
 
 // import {
 //     getAllClientsSpain,
@@ -34,4 +34,5 @@ import {
 // } from "./module/product.js"
 
 // console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
-console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.
+// console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.
+console.log(await getAllEmployeesWithBossAndCodeSever()); // EJERCICIO 3.
