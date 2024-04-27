@@ -33,4 +33,5 @@ import {
 //     getProductGamaAnd100Units
 // } from "./module/product.js"
 
-console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
+// console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
+console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.

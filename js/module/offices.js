@@ -21,8 +21,8 @@ export const getAllOfficesFromSpainCityAndMovil = async() => {
     let dataUpdate = [];
     data.forEach(val => {
         dataUpdate.push({
-            ciudad: val.ciudad,
-            telefono: val.telefono
+            ciudad: val.country,
+            telefono: val.movil
         })
     })
     return dataUpdate;
