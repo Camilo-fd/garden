@@ -1,7 +1,7 @@
-// import {
-//     getAllOfficeCodeAndCity,
-//     getAllOfficesFromSpainCityAndMovil
-// } from "./module/offices.js";
+import {
+    getAllOfficeCodeAndCity,
+    getAllOfficesFromSpainCityAndMovil
+} from "./module/offices.js";
 
 // import {
 //     getAllEmployeesWithBossAndCodeSever,
@@ -9,11 +9,11 @@
 //     getAll
 // } from "./module/employees.js";
 
-import {
-    getAllClientsSpain,
-    getAllClientsMadridAndRepresentative,
-    getClientAndSaleAgentFullName
-} from "./module/clients.js";
+// import {
+//     getAllClientsSpain,
+//     getAllClientsMadridAndRepresentative,
+//     getClientAndSaleAgentFullName
+// } from "./module/clients.js";
 
 // import {
 //     getAllStatusOrder,
@@ -33,4 +33,4 @@ import {
 //     getProductGamaAnd100Units
 // } from "./module/product.js"
 
-console.log(await getClientAndSaleAgentFullName());
+console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
