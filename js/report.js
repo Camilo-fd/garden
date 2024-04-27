@@ -1,10 +1,11 @@
 // import "./components/clock.js";
 // import { getClientAndSaleAgentFullName } from "./module/clients.js"
-import {getAllOfficeCodeAndCity} from "./module/offices.js";
-import {getAllOfficesFromSpainCityAndMovil} from "./module/offices.js";
-import {getAllEmployeesWithBossAndCodeSever} from "./module/employees.js";
-import {getBossFullNameAndEmail} from "./module/employees.js";
-import {getBossFullNameAndEmployees} from "./module/employees.js";
+import {getAllOfficeCodeAndCity} from "./module/offices.js"; // EJERCICIO 1
+import {getAllOfficesFromSpainCityAndMovil} from "./module/offices.js"; // EJERCICIO 2
+import {getAllEmployeesWithBossAndCodeSever} from "./module/employees.js"; // EJERCICIO 3
+import {getBossFullNameAndEmail} from "./module/employees.js"; // EJERCICIO 4
+import {getBossFullNameAndEmployees} from "./module/employees.js"; // EJERCICIO 5
+import {getAllClientsSpain} from "./module/clients.js"; // EJERCICIO 6
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -136,6 +137,32 @@ queryAboutTable5.addEventListener("click", async(e)=>{
                         <p><b>nombre: </b>${val.nombre}</p>
                         <p><b>apellidos: </b>${val.apellidos}</p>
                         <p><b>position: </b>${val.position}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 6. Devuelve un listado con el nombre de los todos los clientes españoles.
+const queryAboutTable6 = document.querySelector("#queryAboutTable6")
+queryAboutTable6.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable6.children
+    if(!report__container.innerHTML){
+        let data = await getAllClientsSpain();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
                     </div>
                 </div>
             </div>

@@ -3,17 +3,17 @@
 //     getAllOfficesFromSpainCityAndMovil
 // } from "./module/offices.js";
 
-import {
-    getAllEmployeesWithBossAndCodeSever,
-    getBossFullNameAndEmail,
-    getBossFullNameAndEmployees
-} from "./module/employees.js";
-
 // import {
-//     getAllClientsSpain,
-//     getAllClientsMadridAndRepresentative,
-//     getClientAndSaleAgentFullName
-// } from "./module/clients.js";
+//     getAllEmployeesWithBossAndCodeSever,
+//     getBossFullNameAndEmail,
+//     getBossFullNameAndEmployees
+// } from "./module/employees.js";
+
+import {
+    getAllClientsSpain,
+    getAllClientsMadridAndRepresentative,
+    getClientAndSaleAgentFullName
+} from "./module/clients.js";
 
 // import {
 //     getAllStatusOrder,
@@ -36,5 +36,6 @@ import {
 // console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
 // console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.
 // console.log(await getAllEmployeesWithBossAndCodeSever()); // EJERCICIO 3.
-// console.log(await getBossFullNameAndEmail()); // EJERCICIO 3.()); // EJERCICIO 4.
-console.log(await getBossFullNameAndEmployees()); // EJERCICIO 3.()); // EJERCICIO 5.
+// console.log(await getBossFullNameAndEmail());  // EJERCICIO 4.
+// console.log(await getBossFullNameAndEmployees());  // EJERCICIO 5.
+console.log(await getAllClientsSpain());  // EJERCICIO 6.
