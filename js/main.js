@@ -9,19 +9,19 @@
 //     getBossFullNameAndEmployees
 // } from "./module/employees.js";
 
-import {
-    getAllClientsSpain,
-    getAllClientsMadridAndRepresentative,
-    getClientAndSaleAgentFullName
-} from "./module/clients.js";
-
 // import {
-//     getAllStatusOrder,
-//     getOrdersClientsExpectedDateAndDelivery,
-//     getOrdersClientsExpectedDateAndDeliveryBeforeDate,
-//     getrejectedRequestsIn2009,
-//     getDeliveryRequest
-// } from "./module/requests.js";
+//     getAllClientsSpain,
+//     getAllClientsMadridAndRepresentative,
+//     getClientAndSaleAgentFullName
+// } from "./module/clients.js";
+
+import {
+    getAllStatusOrder,
+    getOrdersClientsExpectedDateAndDelivery,
+    getOrdersClientsExpectedDateAndDeliveryBeforeDate,
+    getrejectedRequestsIn2009,
+    getDeliveryRequest
+} from "./module/requests.js";
 
 // import {
 //     getAllPay2008,
@@ -38,4 +38,5 @@ import {
 // console.log(await getAllEmployeesWithBossAndCodeSever()); // EJERCICIO 3.
 // console.log(await getBossFullNameAndEmail());  // EJERCICIO 4.
 // console.log(await getBossFullNameAndEmployees());  // EJERCICIO 5.
-console.log(await getAllClientsSpain());  // EJERCICIO 6.
+// console.log(await getAllClientsSpain());  // EJERCICIO 6.
+console.log(await getAllStatusOrder());  // EJERCICIO 7.

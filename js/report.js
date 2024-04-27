@@ -6,6 +6,7 @@ import {getAllEmployeesWithBossAndCodeSever} from "./module/employees.js"; // EJ
 import {getBossFullNameAndEmail} from "./module/employees.js"; // EJERCICIO 4
 import {getBossFullNameAndEmployees} from "./module/employees.js"; // EJERCICIO 5
 import {getAllClientsSpain} from "./module/clients.js"; // EJERCICIO 6
+import {getAllStatusOrder} from "./module/requests.js"; // EJERCICIO 7
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -163,6 +164,32 @@ queryAboutTable6.addEventListener("click", async(e)=>{
                 <div class="card__body">
                     <div class="body__marck">
                         <p><b>nombre: </b>${val.nombre}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
+const queryAboutTable7 = document.querySelector("#queryAboutTable7")
+queryAboutTable7.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable7.children
+    if(!report__container.innerHTML){
+        let data = await getAllStatusOrder();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>estado: </b>${val}</p>
                     </div>
                 </div>
             </div>

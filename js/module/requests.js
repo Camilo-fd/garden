@@ -11,8 +11,9 @@ export const getAllStatusOrder = async () => {
         }
     }
 
-    let combi = dataUpdate.map(estado => ({ estado }));
-    return combi;
+    // let combi = dataUpdate.map(estado => ({ estado }));
+    // return combi;
+    return dataUpdate
 }
 
 // 9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
