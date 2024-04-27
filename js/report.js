@@ -3,6 +3,7 @@
 import {getAllOfficeCodeAndCity} from "./module/offices.js";
 import {getAllOfficesFromSpainCityAndMovil} from "./module/offices.js";
 import {getAllEmployeesWithBossAndCodeSever} from "./module/employees.js";
+import {getBossFullNameAndEmail} from "./module/employees.js";
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -76,13 +77,41 @@ queryAboutTable3.addEventListener("click", async(e)=>{
                 </div>
                 <div class="card__body">
                     <div class="body__marck">
-                        <p><b>nombre: </b>${val.apellidos}</p>
-                        <p><b>apellidos: </b>${val.lastname1} ${val.lastname2}</p>
+                        <p><b>nombre: </b>${val.nombre}</p>
+                        <p><b>apellidos: </b>${val.apellidos}</p>
                     </div>
                 </div>
             </div>
             `;
         });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
+const queryAboutTable4 = document.querySelector("#queryAboutTable4")
+queryAboutTable4.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable4.children
+    if(!report__container.innerHTML){
+        let data = await getBossFullNameAndEmail();
+        let plantilla = "";
+        console.log(data);
+      
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre: </b>${data.nombre}</p>
+                        <p><b>apellidos: </b>${data.apellidos}</p>
+                        <p><b>email: </b>${data.email}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        
         report__container.innerHTML = plantilla;
     }
 })
