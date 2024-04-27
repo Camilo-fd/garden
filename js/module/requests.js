@@ -26,8 +26,8 @@ export const getOrdersClientsExpectedDateAndDelivery = async() => {
         dataUpdate.push({
             pedido: val.code_request,
             cliente: val.code_client,
-            espera: val.date_wait,
-            retraso: val.date_delivery
+            pedido_espera: val.date_wait,
+            pedido_retraso: val.date_delivery
         })
     })
     return dataUpdate

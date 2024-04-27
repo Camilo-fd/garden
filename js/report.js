@@ -8,6 +8,7 @@ import {getBossFullNameAndEmployees} from "./module/employees.js"; // EJERCICIO 
 import {getAllClientsSpain} from "./module/clients.js"; // EJERCICIO 6
 import {getAllStatusOrder} from "./module/requests.js"; // EJERCICIO 7
 import {getAllPay2008} from "./module/payments.js"; // EJERCICIO 8
+import {getOrdersClientsExpectedDateAndDelivery} from "./module/requests.js"; // EJERCICIO 9
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -217,6 +218,35 @@ queryAboutTable8.addEventListener("click", async(e)=>{
                 <div class="card__body">
                     <div class="body__marck">
                         <p><b>Codigo cliente: </b>${val}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
+const queryAboutTable9 = document.querySelector("#queryAboutTable9")
+queryAboutTable9.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable9.children
+    if(!report__container.innerHTML){
+        let data = await getOrdersClientsExpectedDateAndDelivery();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>pedido: </b>${val.pedido}</p>
+                        <p><b>cliente: </b>${val.cliente}</p>
+                        <p><b>pedido espera: </b>${val.pedido_espera}</p>
+                        <p><b>pedido retraso: </b>${val.pedido_retraso}</p>
                     </div>
                 </div>
             </div>
