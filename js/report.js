@@ -7,6 +7,7 @@ import {getBossFullNameAndEmail} from "./module/employees.js"; // EJERCICIO 4
 import {getBossFullNameAndEmployees} from "./module/employees.js"; // EJERCICIO 5
 import {getAllClientsSpain} from "./module/clients.js"; // EJERCICIO 6
 import {getAllStatusOrder} from "./module/requests.js"; // EJERCICIO 7
+import {getAllPay2008} from "./module/payments.js"; // EJERCICIO 8
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -190,6 +191,32 @@ queryAboutTable7.addEventListener("click", async(e)=>{
                 <div class="card__body">
                     <div class="body__marck">
                         <p><b>estado: </b>${val}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos 
+const queryAboutTable8 = document.querySelector("#queryAboutTable8")
+queryAboutTable8.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable8.children
+    if(!report__container.innerHTML){
+        let data = await getAllPay2008();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>Codigo cliente: </b>${val}</p>
                     </div>
                 </div>
             </div>
