@@ -11,6 +11,7 @@ import {getAllPay2008} from "./module/payments.js"; // EJERCICIO 8
 import {getOrdersClientsExpectedDateAndDelivery} from "./module/requests.js"; // EJERCICIO 9
 import {getOrdersClientsExpectedDateAndDeliveryBeforeDate} from "./module/requests.js"; // EJERCICIO 10
 import {getrejectedRequestsIn2009} from "./module/requests.js"; // EJERCICIO 11
+import {getDeliveryRequest} from "./module/requests.js"; // EJERCICIO 12
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -293,6 +294,36 @@ queryAboutTable11.addEventListener("click", async(e)=>{
     let [,report__container] = queryAboutTable11.children
     if(!report__container.innerHTML){
         let data = await getrejectedRequestsIn2009();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>codigo pedido: </b>${val.codigo_pedido}</p>
+                        <p><b>codigo cliente: </b>${val.codigo_cliente}</p>
+                        <p><b>pedido espera: </b>${val.tiempo_espera}</p>
+                        <p><b>fecha llegada: </b>${val.fecha_llegada}</p>
+                        <p><b>estado: </b>${val.estado}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 12. Devuelve un listado de todos los pedidos que han sido **entregados** en el mes de enero de cualquier año.
+const queryAboutTable12 = document.querySelector("#queryAboutTable12")
+queryAboutTable12.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable12.children
+    if(!report__container.innerHTML){
+        let data = await getDeliveryRequest();
         let plantilla = "";
         console.log(data);
         data.forEach(val => {
