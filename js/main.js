@@ -12,7 +12,8 @@
 import {
     getAllClientsSpain,
     getAllClientsMadridAndRepresentative,
-    getClientAndSaleAgentFullName
+    getClientAndSaleAgentFullName,
+    getClientPayWithSalasManager
 } from "./module/clients.js";
 
 // import {
@@ -54,4 +55,5 @@ import {
 
 // PARTE 2 CONSULTAS - MULTITABLA
 
-console.log(await getClientAndSaleAgentFullName()); // EJERCICIO 1.
+// console.log(await getClientAndSaleAgentFullName()); // EJERCICIO 1.
+console.log(await getClientPayWithSalasManager()); // EJERCICIO 2.

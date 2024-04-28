@@ -1,6 +1,6 @@
-import{
-    getEmployeesSaleAgent
-} from './employees.js'
+import{ getEmployeesSaleAgent } from './employees.js'
+import{ getAllPayments } from './payments.js'
+
 
 
 // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
@@ -53,3 +53,36 @@ export const getClientAndSaleAgentFullName = async() => {
     }
     return dataUpdated
 }
+
+// 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+
+export const getClientPayWithSalasManager = async() => {
+    let restClients = await fetch("http://localhost:5501/clients");
+    let dataClients = await restClients.json();
+    let dataUpdated =  [];
+    
+    
+    for ( let i = 0; i < dataClients.length ; i++){
+        let [employees] = await getEmployeesSaleAgent(dataClients[i].code_employee_sales_manager);
+        let [ payments ] = await getAllPayments(dataClients[i].client_code)
+        dataUpdated.push({
+            nombre: dataClients[i].client_name,
+            nombre_manager: `${employees.name} ${employees.lastname1} ${employees.lastname2}`,
+        })
+    }
+    return dataUpdated
+}
+// let dataPayments = await getAllPayments();
+// let dataEmployees = await getEmployeesSaleAgent();
+        // dataClients.forEach( i => {
+        //     dataPayments.forEach( x => {
+        //         dataEmployees.forEach(y => {
+        //             if(i.client_code == x.code_client ){
+        //                 dataUpdated.add(
+        //                     i.client_name,
+    
+        //                 )
+        //             }
+        //         })
+        //     })
+        // })

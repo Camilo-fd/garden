@@ -49,7 +49,7 @@ export const getBossFullNameAndEmployees = async() => {
     return dataUpdate;
 }
 
-// CONSULTAs PARTE 2.
+// CONSULTAS PARTE 2.
 
 // SEGUIMIENTO DE LA PARTE 1:
 

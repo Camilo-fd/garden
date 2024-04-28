@@ -49,3 +49,11 @@ export const getAllPayOptionsPay = async() => {
 
     return dataUpdate;
 }
+
+// CONSULTAS PARTE 2.
+
+export const getAllPayments = async(code) => {
+    let res = await fetch(`http://localhost:5505/payments?code_clients=${code}`);
+    let data = await res.json();
+    return data
+}
