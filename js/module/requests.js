@@ -37,38 +37,38 @@ export const getOrdersClientsExpectedDateAndDelivery = async() => {
 
 // OPCION 1.
 
-export const getOrdersClientsExpectedDateAndDeliveryBeforeDate = async() => {
-    let res = await fetch("http://localhost:5508/requests?status=Entregado");
-    let data = await res.json();
-    let dataUpdate = [];
-    data.forEach(val => {
-        if (val.date_delivery == null) {
-            dataUpdate.push({
-                pedido: val.code_request,
-                codigo_cliente: val.code_client,
-                tiempo_espera: val.date_wait,
-                tiempo_llegada: val.date_delivery
-            });
-            } else {
-                let delivery = val.date_delivery.split('-')[2];
-                let wait = val.date_wait.split('-')[2];
-                let resta = delivery - wait
-                if (resta != 2){
-                    dataUpdate.push({
-                        pedido: val.code_request,
-                        codigo_cliente: val.code_client,
-                        tiempo_espera: val.date_wait,
-                        tiempo_llegada: val.date_delivery
-                    })
-                }
-            }
-    })
-    return dataUpdate
-}
+// export const getOrdersClientsExpectedDateAndDeliveryBeforeDate = async() => {
+//     let res = await fetch("http://localhost:5508/requests?status=Entregado");
+//     let data = await res.json();
+//     let dataUpdate = [];
+//     data.forEach(val => {
+//         if (val.date_delivery == null) {
+//             dataUpdate.push({
+//                 pedido: val.code_request,
+//                 codigo_cliente: val.code_client,
+//                 tiempo_espera: val.date_wait,
+//                 tiempo_llegada: val.date_delivery
+//             });
+//             } else {
+//                 let delivery = val.date_delivery.split('-')[2];
+//                 let wait = val.date_wait.split('-')[2];
+//                 let resta = delivery - wait
+//                 if (resta != 2){
+//                     dataUpdate.push({
+//                         pedido: val.code_request,
+//                         codigo_cliente: val.code_client,
+//                         tiempo_espera: val.date_wait,
+//                         tiempo_llegada: val.date_delivery
+//                     })
+//                 }
+//             }
+//     })
+//     return dataUpdate
+// }
 
 // OPCION 2.
 
-export const getAll = async() => {
+export const getOrdersClientsExpectedDateAndDeliveryBeforeDate  = async() => {
     let res = await fetch("http://localhost:5508/requests");
     let data = await res.json();
     let dataUpdate = data.filter(val => (val.date_wait > val.date_delivery))

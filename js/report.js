@@ -9,6 +9,7 @@ import {getAllClientsSpain} from "./module/clients.js"; // EJERCICIO 6
 import {getAllStatusOrder} from "./module/requests.js"; // EJERCICIO 7
 import {getAllPay2008} from "./module/payments.js"; // EJERCICIO 8
 import {getOrdersClientsExpectedDateAndDelivery} from "./module/requests.js"; // EJERCICIO 9
+import {getOrdersClientsExpectedDateAndDeliveryBeforeDate} from "./module/requests.js"; // EJERCICIO 10
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -247,6 +248,35 @@ queryAboutTable9.addEventListener("click", async(e)=>{
                         <p><b>cliente: </b>${val.cliente}</p>
                         <p><b>pedido espera: </b>${val.pedido_espera}</p>
                         <p><b>pedido retraso: </b>${val.pedido_retraso}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+const queryAboutTable10 = document.querySelector("#queryAboutTable10")
+queryAboutTable10.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable10.children
+    if(!report__container.innerHTML){
+        let data = await getOrdersClientsExpectedDateAndDeliveryBeforeDate();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>pedido: </b>${val.pedido}</p>
+                        <p><b>codigo cliente: </b>${val.codigo_cliente}</p>
+                        <p><b>pedido espera: </b>${val.tiempo_espera}</p>
+                        <p><b>pedido retraso: </b>${val.tiempo_llegada}</p>
                     </div>
                 </div>
             </div>

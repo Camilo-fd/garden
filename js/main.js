@@ -40,4 +40,6 @@ import {
 // console.log(await getBossFullNameAndEmployees());  // EJERCICIO 5.
 // console.log(await getAllClientsSpain());  // EJERCICIO 6.
 // console.log(await getAllStatusOrder());  // EJERCICIO 7.
-console.log(await getOrdersClientsExpectedDateAndDelivery());  // EJERCICIO 8.
+// console.log(await getAllPay2008());  // EJERCICIO 8.
+// console.log(await getOrdersClientsExpectedDateAndDelivery());  // EJERCICIO 9.
+console.log(await getOrdersClientsExpectedDateAndDeliveryBeforeDate());  // EJERCICIO 10.
