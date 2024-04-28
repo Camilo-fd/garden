@@ -12,6 +12,7 @@ import {getOrdersClientsExpectedDateAndDelivery} from "./module/requests.js"; //
 import {getOrdersClientsExpectedDateAndDeliveryBeforeDate} from "./module/requests.js"; // EJERCICIO 10
 import {getrejectedRequestsIn2009} from "./module/requests.js"; // EJERCICIO 11
 import {getDeliveryRequest} from "./module/requests.js"; // EJERCICIO 12
+import {getAllPayOptions} from "./module/payments.js"; // EJERCICIO 13
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -339,6 +340,34 @@ queryAboutTable12.addEventListener("click", async(e)=>{
                         <p><b>pedido espera: </b>${val.tiempo_espera}</p>
                         <p><b>fecha llegada: </b>${val.fecha_llegada}</p>
                         <p><b>estado: </b>${val.estado}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 13. Devuelve un listado con todos los pagos que se realizaron en el año `2008` mediante `Paypal`. Ordene el resultado de mayor a menor.
+const queryAboutTable13 = document.querySelector("#queryAboutTable13")
+queryAboutTable13.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable13.children
+    if(!report__container.innerHTML){
+        let data = await getAllPayOptions();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>codigo cliente: </b>${val.codigo_cliente}</p>
+                        <p><b>fecha pago: </b>${val.fecha_pago}</p>
+                        <p><b>valor: </b>${val.valor}</p>
                     </div>
                 </div>
             </div>
