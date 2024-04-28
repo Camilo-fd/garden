@@ -57,4 +57,5 @@ import {
 // PARTE 2 CONSULTAS - MULTITABLA
 
 // console.log(await getClientAndSaleAgentFullName()); // EJERCICIO 1.
-console.log(await getClientPayWithSalasManager()); // EJERCICIO 2.
+// console.log(await getClientPayWithSalasManager()); // EJERCICIO 2.
+console.log(await getClientNotPayWithSalasManager()); // EJERCICIO 3.

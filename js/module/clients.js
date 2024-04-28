@@ -81,3 +81,51 @@ export const getClientPayWithSalasManager = async() => {
     dataUpdated = Array.from(dataUpdated).map( val => JSON.parse(val))
     return dataUpdated
 }
+
+// 3. Muestra el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.*
+
+export const getClientNotPayWithSalasManager = async() => {
+
+    let restClients = await fetch("http://localhost:5501/clients");
+    let dataClients = await restClients.json();
+    let dataEmployees = await getEmployeesSaleAgent();
+    let dataPayment = await getAllPayments();
+    let dataUpdated = new Set();
+    
+    for (let cliente of dataClients) {
+        for (let employee of dataEmployees) {
+            for (let payment of dataPayment){
+                if(cliente.client_code != payment.code_client && cliente.code_employee_sales_manager == employee.employee_code){
+                    dataUpdated.add(JSON.stringify({
+                        nombre_cliente: cliente.client_name,
+                        codigo_empleado: cliente.code_employee_sales_manager,
+                        nombre_empleado: employee.name,
+                    }))
+                }
+            }
+        }
+    }
+    dataUpdated = Array.from(dataUpdated).map( val => JSON.parse(val))
+    return dataUpdated.sort()
+}
+    
+    // dataClients.forEach(cliente => {*
+    //     dataEmployees.forEach(employee => {*
+    //         dataPayment.forEach(payment => {*
+    //             if(cliente.code_employee_sales_manager == employee.employee_code && cliente.client_code != payment.code_client){*
+    //                 // dataUpdated.push(*
+    //                 //     cliente.client_code,*
+    //                 //     cliente.client_name,*
+    //                 //     cliente.code_employee_sales_manager,*
+    //                 //     employee.name*
+    //                 // )*
+    //                 dataUpdated.push({*
+    //                     nombre_cliente: cliente.client_name,*
+    //                     codigo_empleado: cliente.code_employee_sales_manager,*
+    //                     nombre_empleado: employee.name,*
+    //                 })*
+    //             }*
+    //         })*
+    //     })*
+    // })*
+    // let cambio = new Set(dataUpdated)
