@@ -90,42 +90,26 @@ export const getClientNotPayWithSalasManager = async() => {
     let dataClients = await restClients.json();
     let dataEmployees = await getEmployeesSaleAgent();
     let dataPayment = await getAllPayments();
-    let dataUpdated = new Set();
+    let dataUpdated = [];
     
     for (let cliente of dataClients) {
-        for (let employee of dataEmployees) {
-            for (let payment of dataPayment){
-                if(cliente.client_code != payment.code_client && cliente.code_employee_sales_manager == employee.employee_code){
-                    dataUpdated.add(JSON.stringify({
+        let bandera = false;
+        for (let payment of dataPayment) {
+            if (cliente.client_code === payment.code_client){
+                bandera = true;
+            }
+        }
+        if (!bandera) {
+            for (let employee of dataEmployees) {
+                if (cliente.code_employee_sales_manager === employee.employee_code) {
+                    dataUpdated.push({
                         nombre_cliente: cliente.client_name,
                         codigo_empleado: cliente.code_employee_sales_manager,
                         nombre_empleado: employee.name,
-                    }))
+                    })
                 }
             }
         }
     }
-    dataUpdated = Array.from(dataUpdated).map( val => JSON.parse(val))
-    return dataUpdated.sort()
+    return dataUpdated
 }
-    
-    // dataClients.forEach(cliente => {*
-    //     dataEmployees.forEach(employee => {*
-    //         dataPayment.forEach(payment => {*
-    //             if(cliente.code_employee_sales_manager == employee.employee_code && cliente.client_code != payment.code_client){*
-    //                 // dataUpdated.push(*
-    //                 //     cliente.client_code,*
-    //                 //     cliente.client_name,*
-    //                 //     cliente.code_employee_sales_manager,*
-    //                 //     employee.name*
-    //                 // )*
-    //                 dataUpdated.push({*
-    //                     nombre_cliente: cliente.client_name,*
-    //                     codigo_empleado: cliente.code_employee_sales_manager,*
-    //                     nombre_empleado: employee.name,*
-    //                 })*
-    //             }*
-    //         })*
-    //     })*
-    // })*
-    // let cambio = new Set(dataUpdated)
