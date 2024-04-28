@@ -42,4 +42,5 @@ import {
 // console.log(await getAllStatusOrder());  // EJERCICIO 7.
 // console.log(await getAllPay2008());  // EJERCICIO 8.
 // console.log(await getOrdersClientsExpectedDateAndDelivery());  // EJERCICIO 9.
-console.log(await getOrdersClientsExpectedDateAndDeliveryBeforeDate());  // EJERCICIO 10.
+// console.log(await getOrdersClientsExpectedDateAndDeliveryBeforeDate());  // EJERCICIO 10.
+console.log(await getrejectedRequestsIn2009());  // EJERCICIO 11.
