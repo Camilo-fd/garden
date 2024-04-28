@@ -28,8 +28,10 @@ export const getAllClientsMadridAndRepresentative = async() => {
             dataUpdate.push({
                 nombre: val.contact_name
             })
+            // dataUpdate.push(val.contact_name)
         }
     })
+
     return dataUpdate
 }
 

@@ -15,6 +15,7 @@ import {getDeliveryRequest} from "./module/requests.js"; // EJERCICIO 12
 import {getAllPayOptions} from "./module/payments.js"; // EJERCICIO 13
 import {getAllPayOptionsPay} from "./module/payments.js"; // EJERCICIO 14
 import {getProductGamaAnd100Units} from "./module/product.js"; // EJERCICIO 15
+import {getAllClientsMadridAndRepresentative} from "./module/clients.js"; // EJERCICIO 16
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -423,6 +424,32 @@ queryAboutTable15.addEventListener("click", async(e)=>{
                     <div class="body__marck">
                         <p><b>precio venta: </b>${val.price_sale}</p>
                         <p><b>nombre: </b>${val.name}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 16. Devuelve un listado con todos los clientes que sean de la ciudad de `Madrid` y cuyo representante de ventas tenga el código de empleado `11` o `30`.
+const queryAboutTable16 = document.querySelector("#queryAboutTable16")
+queryAboutTable16.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable16.children
+    if(!report__container.innerHTML){
+        let data = await getAllClientsMadridAndRepresentative();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
                     </div>
                 </div>
             </div>

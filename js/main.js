@@ -9,11 +9,11 @@
 //     getBossFullNameAndEmployees
 // } from "./module/employees.js";
 
-// import {
-//     getAllClientsSpain,
-//     getAllClientsMadridAndRepresentative,
-//     getClientAndSaleAgentFullName
-// } from "./module/clients.js";
+import {
+    getAllClientsSpain,
+    getAllClientsMadridAndRepresentative,
+    getClientAndSaleAgentFullName
+} from "./module/clients.js";
 
 // import {
 //     getAllStatusOrder,
@@ -29,9 +29,9 @@
 //     getAllPayOptionsPay
 // } from "./module/payments.js"
 
-import {
-    getProductGamaAnd100Units
-} from "./module/product.js"
+// import {
+//     getProductGamaAnd100Units
+// } from "./module/product.js"
 
 // console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
 // console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.
@@ -47,4 +47,5 @@ import {
 // console.log(await getDeliveryRequest());  // EJERCICIO 12.
 // console.log(await getAllPayOptions());  // EJERCICIO 13.
 // console.log(await getAllPayOptionsPay());  // EJERCICIO 14.
-console.log(await getProductGamaAnd100Units());  // EJERCICIO 15.
+// console.log(await getProductGamaAnd100Units());  // EJERCICIO 15.
+console.log(await getAllClientsMadridAndRepresentative());  // EJERCICIO 16.
