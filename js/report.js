@@ -14,6 +14,7 @@ import {getrejectedRequestsIn2009} from "./module/requests.js"; // EJERCICIO 11
 import {getDeliveryRequest} from "./module/requests.js"; // EJERCICIO 12
 import {getAllPayOptions} from "./module/payments.js"; // EJERCICIO 13
 import {getAllPayOptionsPay} from "./module/payments.js"; // EJERCICIO 14
+import {getProductGamaAnd100Units} from "./module/product.js"; // EJERCICIO 15
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -395,6 +396,33 @@ queryAboutTable14.addEventListener("click", async(e)=>{
                 <div class="card__body">
                     <div class="body__marck">
                         <p><b>formas pago: </b>${val}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 15. Devuelve un listado con todos los productos que pertenecen a la gama `Ornamentales` y que tienen más de `100` unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio.
+const queryAboutTable15 = document.querySelector("#queryAboutTable15")
+queryAboutTable15.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable15.children
+    if(!report__container.innerHTML){
+        let data = await getProductGamaAnd100Units();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>precio venta: </b>${val.price_sale}</p>
+                        <p><b>nombre: </b>${val.name}</p>
                     </div>
                 </div>
             </div>
