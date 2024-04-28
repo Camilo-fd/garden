@@ -53,8 +53,8 @@ export const getBossFullNameAndEmployees = async() => {
 
 // SEGUIMIENTO DE LA PARTE 1:
 
-export const getEmployeesSaleAgent = async (code) => {
-    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`)
+export const getEmployeesSaleAgent = async () => {
+    let res = await fetch(`http://localhost:5502/employees?position=Representante%20Ventas`)
     let data = await res.json()
     return data
 }

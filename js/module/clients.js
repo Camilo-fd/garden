@@ -59,30 +59,25 @@ export const getClientAndSaleAgentFullName = async() => {
 export const getClientPayWithSalasManager = async() => {
     let restClients = await fetch("http://localhost:5501/clients");
     let dataClients = await restClients.json();
-    let dataUpdated =  [];
+    let dataEmployees = await getEmployeesSaleAgent();
+    let dataPayment = await getAllPayments();
+    let dataUpdated =  new Set();
     
-    
-    for ( let i = 0; i < dataClients.length ; i++){
-        let [employees] = await getEmployeesSaleAgent(dataClients[i].code_employee_sales_manager);
-        let [ payments ] = await getAllPayments(dataClients[i].client_code)
-        dataUpdated.push({
-            nombre: dataClients[i].client_name,
-            nombre_manager: `${employees.name} ${employees.lastname1} ${employees.lastname2}`,
-        })
+    for (let cliente of dataClients) {
+        for (let employee of dataEmployees) {
+            for (let payment of dataPayment){
+                if(cliente.code_employee_sales_manager == employee.employee_code && cliente.client_code == payment.code_client){
+                    dataUpdated.add(JSON.stringify({
+                        codigo_cliente: cliente.client_code,
+                        nombre_cliente: cliente.client_name,
+                        codigo_empleado: cliente.code_employee_sales_manager,
+                        nombre_empleado: employee.name,
+                    }))
+                }
+            }
+        }
     }
+
+    dataUpdated = Array.from(dataUpdated).map( val => JSON.parse(val))
     return dataUpdated
 }
-// let dataPayments = await getAllPayments();
-// let dataEmployees = await getEmployeesSaleAgent();
-        // dataClients.forEach( i => {
-        //     dataPayments.forEach( x => {
-        //         dataEmployees.forEach(y => {
-        //             if(i.client_code == x.code_client ){
-        //                 dataUpdated.add(
-        //                     i.client_name,
-    
-        //                 )
-        //             }
-        //         })
-        //     })
-        // })

@@ -13,7 +13,8 @@ import {
     getAllClientsSpain,
     getAllClientsMadridAndRepresentative,
     getClientAndSaleAgentFullName,
-    getClientPayWithSalasManager
+    getClientPayWithSalasManager,
+    getClientNotPayWithSalasManager
 } from "./module/clients.js";
 
 // import {
