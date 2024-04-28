@@ -36,7 +36,7 @@ export const getAllPayOptions = async() => {
 
 // 14. Devuelve un listado con todas las formas de pago que aparecen en la tabla `pago`. Tenga en cuenta que no deben aparecer formas de pago repetidas.
 
-export const getAll = async() => {
+export const getAllPayOptionsPay = async() => {
     let res = await fetch("http://localhost:5505/payments");
     let data = await res.json();
     let dataUpdate = [];

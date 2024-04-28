@@ -13,6 +13,7 @@ import {getOrdersClientsExpectedDateAndDeliveryBeforeDate} from "./module/reques
 import {getrejectedRequestsIn2009} from "./module/requests.js"; // EJERCICIO 11
 import {getDeliveryRequest} from "./module/requests.js"; // EJERCICIO 12
 import {getAllPayOptions} from "./module/payments.js"; // EJERCICIO 13
+import {getAllPayOptionsPay} from "./module/payments.js"; // EJERCICIO 14
 
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
@@ -368,6 +369,32 @@ queryAboutTable13.addEventListener("click", async(e)=>{
                         <p><b>codigo cliente: </b>${val.codigo_cliente}</p>
                         <p><b>fecha pago: </b>${val.fecha_pago}</p>
                         <p><b>valor: </b>${val.valor}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 14. Devuelve un listado con todas las formas de pago que aparecen en la tabla `pago`. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+const queryAboutTable14 = document.querySelector("#queryAboutTable14")
+queryAboutTable14.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable14.children
+    if(!report__container.innerHTML){
+        let data = await getAllPayOptionsPay();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>formas pago: </b>${val}</p>
                     </div>
                 </div>
             </div>

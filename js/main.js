@@ -15,19 +15,19 @@
 //     getClientAndSaleAgentFullName
 // } from "./module/clients.js";
 
-import {
-    getAllStatusOrder,
-    getOrdersClientsExpectedDateAndDelivery,
-    getOrdersClientsExpectedDateAndDeliveryBeforeDate,
-    getrejectedRequestsIn2009,
-    getDeliveryRequest
-} from "./module/requests.js";
-
 // import {
-//     getAllPay2008,
-//     getAllPayOptions,
-//     getAll
-// } from "./module/payments.js"
+//     getAllStatusOrder,
+//     getOrdersClientsExpectedDateAndDelivery,
+//     getOrdersClientsExpectedDateAndDeliveryBeforeDate,
+//     getrejectedRequestsIn2009,
+//     getDeliveryRequest
+// } from "./module/requests.js";
+
+import {
+    getAllPay2008,
+    getAllPayOptions,
+    getAllPayOptionsPay
+} from "./module/payments.js"
 
 // import {
 //     getProductGamaAnd100Units
@@ -44,4 +44,6 @@ import {
 // console.log(await getOrdersClientsExpectedDateAndDelivery());  // EJERCICIO 9.
 // console.log(await getOrdersClientsExpectedDateAndDeliveryBeforeDate());  // EJERCICIO 10.
 // console.log(await getrejectedRequestsIn2009());  // EJERCICIO 11.
-console.log(await getDeliveryRequest());  // EJERCICIO 12.
+// console.log(await getDeliveryRequest());  // EJERCICIO 12.
+// console.log(await getAllPayOptions());  // EJERCICIO 13.
+console.log(await getAllPayOptionsPay());  // EJERCICIO 12.
