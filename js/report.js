@@ -1,5 +1,7 @@
 // import "./components/clock.js";
 // import { getClientAndSaleAgentFullName } from "./module/clients.js"
+
+// PARTE 1 CONSULTAS - TABLAS
 import {getAllOfficeCodeAndCity} from "./module/offices.js"; // EJERCICIO 1
 import {getAllOfficesFromSpainCityAndMovil} from "./module/offices.js"; // EJERCICIO 2
 import {getAllEmployeesWithBossAndCodeSever} from "./module/employees.js"; // EJERCICIO 3
@@ -17,6 +19,10 @@ import {getAllPayOptionsPay} from "./module/payments.js"; // EJERCICIO 14
 import {getProductGamaAnd100Units} from "./module/product.js"; // EJERCICIO 15
 import {getAllClientsMadridAndRepresentative} from "./module/clients.js"; // EJERCICIO 16
 
+// PARTE 2 CONSULTAS - MULTITABLAS
+import {getClientAndSaleAgentFullName} from "./module/clients.js"; // EJERCICIO 1
+
+// PARTE 1 CONSULTAS - TABLAS
 
 // 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
 const queryAboutTable1 = document.querySelector("#queryAboutTable1")
@@ -450,6 +456,35 @@ queryAboutTable16.addEventListener("click", async(e)=>{
                 <div class="card__body">
                     <div class="body__marck">
                         <p><b>nombre: </b>${val.nombre}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// PARTE 2 CONSULTAS - MULTITABLAS
+
+// 1. Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+const queryAboutTable17 = document.querySelector("#queryAboutTable17")
+queryAboutTable17.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable17.children
+    if(!report__container.innerHTML){
+        let data = await getClientAndSaleAgentFullName();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
+                        <p><b>representante ventas: </b>${val.nombre_manager}</p>
                     </div>
                 </div>
             </div>

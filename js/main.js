@@ -33,6 +33,8 @@ import {
 //     getProductGamaAnd100Units
 // } from "./module/product.js"
 
+// PARTE 1 CONSULTAS - TABLAS
+
 // console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
 // console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.
 // console.log(await getAllEmployeesWithBossAndCodeSever()); // EJERCICIO 3.
@@ -48,4 +50,8 @@ import {
 // console.log(await getAllPayOptions());  // EJERCICIO 13.
 // console.log(await getAllPayOptionsPay());  // EJERCICIO 14.
 // console.log(await getProductGamaAnd100Units());  // EJERCICIO 15.
-console.log(await getAllClientsMadridAndRepresentative());  // EJERCICIO 16.
+// console.log(await getAllClientsMadridAndRepresentative());  // EJERCICIO 16.
+
+// PARTE 2 CONSULTAS - MULTITABLA
+
+console.log(await getClientAndSaleAgentFullName()); // EJERCICIO 1.
