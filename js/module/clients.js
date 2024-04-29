@@ -161,3 +161,30 @@ export const getClientNotPayWithSalasManagerAndCity = async () => {
     dataUpdated = Array.from(dataUpdated).map( val => JSON.parse(val))
     return dataUpdated;
 };
+
+// 6. Lista la dirección de las oficinas que tengan clientes en `Fuenlabrada`.
+
+export const getOfficesClientsInFuenlabrada = async() => {
+    let resClients = await fetch("http://localhost:5501/clients?city=Fuenlabrada");
+    let dataClients = await resClients.json();
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataOffices = await getAllOffices();
+    let dataUpdate = []
+
+    for (let clientes of dataClients) {
+        for (let employees of dataEmployees) {
+            if (clientes.code_employee_sales_manager === employees.employee_code){
+                for (let offices of dataOffices) {
+                    if(employees.code_office === offices.code_office) {
+                        dataUpdate.push({
+                            codigo: clientes.code_employee_sales_manager,
+                            direccion: offices.address1 
+                        })
+                    }
+                }
+            }
+        }
+    }
+
+    return dataUpdate
+}
