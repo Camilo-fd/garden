@@ -15,7 +15,8 @@ import {
     getClientAndSaleAgentFullName,
     getClientPayWithSalasManager,
     getClientNotPayWithSalasManager,
-    getClientPayWithSalasManagerAndCity
+    getClientPayWithSalasManagerAndCity,
+    getClientNotPayWithSalasManagerAndCity
 } from "./module/clients.js";
 
 // import {
@@ -60,4 +61,5 @@ import {
 // console.log(await getClientAndSaleAgentFullName()); // EJERCICIO 1.
 // console.log(await getClientPayWithSalasManager()); // EJERCICIO 2.
 // console.log(await getClientNotPayWithSalasManager()); // EJERCICIO 3.
-console.log(await getClientPayWithSalasManagerAndCity()); // EJERCICIO 4.
+// console.log(await getClientPayWithSalasManagerAndCity()); // EJERCICIO 4.
+console.log(await getClientNotPayWithSalasManagerAndCity()); // EJERCICIO 5.

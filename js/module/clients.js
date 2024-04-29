@@ -136,3 +136,28 @@ export const getClientPayWithSalasManagerAndCity = async () => {
     }
     return dataUpdated;
 };
+
+// 5. Devuelve el nombre de los clientes que **no** hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+
+export const getClientNotPayWithSalasManagerAndCity = async () => {
+    let dataClients = await getClientNotPayWithSalasManager();
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataOffices = await getAllOffices();
+    let dataUpdated = new Set();
+
+    for (let cliente of dataClients) {
+        for (let employee of dataEmployees) {
+            for (let office of dataOffices) {
+                if (employee.code_office === office.code_office && employee.code_employee === cliente.code_employee_sales_manager) {
+                    dataUpdated.add(JSON.stringify({
+                        nombre_cliente: cliente.nombre_cliente,
+                        nombre_manager: cliente.nombre_empleado,
+                        ciudad: office.city
+                    }));
+                }
+            }
+        }
+    }
+    dataUpdated = Array.from(dataUpdated).map( val => JSON.parse(val))
+    return dataUpdated;
+};
