@@ -17,7 +17,8 @@ import {
     getClientNotPayWithSalasManager,
     getClientPayWithSalasManagerAndCity,
     getClientNotPayWithSalasManagerAndCity,
-    getOfficesClientsInFuenlabrada
+    getOfficesClientsInFuenlabrada,
+    getListClientsAndEmployeesWithOffice
 } from "./module/clients.js";
 
 // import {
@@ -64,4 +65,5 @@ import {
 // console.log(await getClientNotPayWithSalasManager()); // EJERCICIO 3.
 // console.log(await getClientPayWithSalasManagerAndCity()); // EJERCICIO 4.
 // console.log(await getClientNotPayWithSalasManagerAndCity()); // EJERCICIO 5.
-console.log(await getOfficesClientsInFuenlabrada()); // EJERCICIO 6.
+// console.log(await getOfficesClientsInFuenlabrada()); // EJERCICIO 6.
+console.log(await getListClientsAndEmployeesWithOffice()); // EJERCICIO 7.

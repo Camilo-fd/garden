@@ -188,3 +188,32 @@ export const getOfficesClientsInFuenlabrada = async() => {
 
     return dataUpdate
 }
+
+
+// 7. Devuelve el nombre de los clientes y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+
+export const getListClientsAndEmployeesWithOffice = async() => {
+    let resClients = await fetch("http://localhost:5501/clients");
+    let dataClients = await resClients.json();
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataOffices = await getAllOffices();
+    let dataUpdate = [];
+
+    for (let clientes of dataClients) {
+        for (let employee of dataEmployees) {
+            if (clientes.client_code === employee.employee_code) {
+                for (let offices of dataOffices) {
+                    if (employee.code_office === offices.code_office) {
+                        dataUpdate.push({
+                            nombre_cliente: clientes.client_name,
+                            nombre_manager: employee.name,
+                            ciudad: offices.city
+                        })
+                    }
+                }
+            }
+        }
+    }
+
+    return dataUpdate
+}

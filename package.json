@@ -12,7 +12,7 @@
     "offices": "json-server js/db/offices.json -p 5504",
     "payments": "json-server js/db/payments.json -p 5505",
     "products": "json-server js/db/product.json -p 5506",
-    "requests_datails": "json-server js/db/requests_datailsgaman.json -p 5507",
+    "request_details": "json-server js/db/request_details.json -p 5507",
     "requests": "json-server js/db/requests.json -p 5508"
   },
   "keywords": [],
