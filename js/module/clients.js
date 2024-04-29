@@ -1,7 +1,6 @@
-import{ getEmployeesSaleAgent } from './employees.js'
+import{ getEmployeesSaleAgent, getEmployeesCodeOffice } from './employees.js'
 import{ getAllPayments } from './payments.js'
-
-
+import{ getAllOffices } from './offices.js'
 
 // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
@@ -113,3 +112,27 @@ export const getClientNotPayWithSalasManager = async() => {
     }
     return dataUpdated
 }
+
+// 4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+
+export const getClientPayWithSalasManagerAndCity = async () => {
+    let dataClients = await getClientAndSaleAgentFullName();
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataOffices = await getAllOffices();
+    let dataUpdated = [];
+
+    for (let cliente of dataClients) {
+        for (let employee of dataEmployees) {
+            for (let office of dataOffices) {
+                if (employee.code_office === office.code_office && employee.code_employee === cliente.code_employee_sales_manager) {
+                    dataUpdated.push({
+                        nombre_cliente: cliente.nombre,
+                        nombre_manager: cliente.nombre_manager,
+                        ciudad: office.city
+                    });
+                }
+            }
+        }
+    }
+    return dataUpdated;
+};

@@ -27,3 +27,11 @@ export const getAllOfficesFromSpainCityAndMovil = async() => {
     })
     return dataUpdate;
 }
+
+// CONSULTAS PARTE 2.
+
+export const getAllOffices = async() => {
+    let res = await fetch("http://localhost:5504/offices");
+    let data = await res.json()
+    return data;
+}
