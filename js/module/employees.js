@@ -89,3 +89,33 @@ export const getListEmployeesWithBoss = async () => {
 }
 
 // 9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
+
+export const getAllEmployeesAndBossesOfTheBosses = async () => {
+    let res = await fetch("http://localhost:5502/employees");
+    let employees = await res.json();
+    let employeesData = [];
+    for (let i = 0; i < employees.length; i++){
+        if (employees[i].code_boss == null){
+            employeesData.push({
+                employe_name: employees[i].name,
+                code_boss: employees[i].code_boss
+            })
+        } else if(employees[(employees[i].code_boss) - 1].code_boss == null){
+            employeesData.push({
+                employe_name: employees[i].name,
+                code_boss: employees[i].code_boss,
+                boss_name: employees[(employees[i].code_boss) - 1].name,
+                code_boss_from_boss: employees[(employees[i].code_boss) - 1].code_boss
+            })
+        } else {
+            employeesData.push({
+                employe_name: employees[i].name,
+                code_boss: employees[i].code_boss,
+                boss_name: employees[(employees[i].code_boss) - 1].name,
+                code_boss_from_boss: employees[(employees[i].code_boss) - 1].code_boss,
+                boss_name_from_boss: employees[(employees[(employees[i].code_boss) - 1].code_boss) - 1].name
+            })
+        }
+    }
+    return employeesData;
+}
