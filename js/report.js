@@ -25,6 +25,7 @@ import {getClientPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 2
 import {getClientNotPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 3
 import {getClientPayWithSalasManagerAndCity} from "./module/clients.js"; // EJERCICIO 4
 import {getClientNotPayWithSalasManagerAndCity} from "./module/clients.js"; // EJERCICIO 5
+import {getOfficesClientsInFuenlabrada} from "./module/clients.js"; // EJERCICIO 6
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -602,6 +603,33 @@ queryAboutTable21.addEventListener("click", async(e)=>{
                         <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
                         <p><b>nombre_manager: </b>${val.nombre_manager}</p>
                         <p><b>ciudad: </b>${val.ciudad}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 6. Lista la dirección de las oficinas que tengan clientes en `Fuenlabrada`.
+const queryAboutTable22 = document.querySelector("#queryAboutTable22")
+queryAboutTable22.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable22.children
+    if(!report__container.innerHTML){
+        let data = await getOfficesClientsInFuenlabrada();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>codigo: </b>${val.codigo}</p>
+                        <p><b>direccion: </b>${val.direccion}</p>
                     </div>
                 </div>
             </div>
