@@ -23,6 +23,7 @@ import {getAllClientsMadridAndRepresentative} from "./module/clients.js"; // EJE
 import {getClientAndSaleAgentFullName} from "./module/clients.js"; // EJERCICIO 1
 import {getClientPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 2
 import {getClientNotPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 3
+import {getClientPayWithSalasManagerAndCity} from "./module/clients.js"; // EJERCICIO 4
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -544,6 +545,34 @@ queryAboutTable19.addEventListener("click", async(e)=>{
                         <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
                         <p><b>codigo_empleado: </b>${val.codigo_empleado}</p>
                         <p><b>nombre_empleado: </b>${val.nombre_empleado}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+const queryAboutTable20 = document.querySelector("#queryAboutTable20")
+queryAboutTable20.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable20.children
+    if(!report__container.innerHTML){
+        let data = await getClientPayWithSalasManagerAndCity();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>nombre_manager: </b>${val.nombre_manager}</p>
+                        <p><b>ciudad: </b>${val.ciudad}</p>
                     </div>
                 </div>
             </div>
