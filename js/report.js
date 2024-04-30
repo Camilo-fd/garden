@@ -22,6 +22,7 @@ import {getAllClientsMadridAndRepresentative} from "./module/clients.js"; // EJE
 // PARTE 2 CONSULTAS - MULTITABLAS
 import {getClientAndSaleAgentFullName} from "./module/clients.js"; // EJERCICIO 1
 import {getClientPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 2
+import {getClientNotPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 3
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -512,6 +513,34 @@ queryAboutTable18.addEventListener("click", async(e)=>{
                 <div class="card__body">
                     <div class="body__marck">
                         <p><b>codigo_cliente: </b>${val.codigo_cliente}</p>
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>codigo_empleado: </b>${val.codigo_empleado}</p>
+                        <p><b>nombre_empleado: </b>${val.nombre_empleado}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 3. Muestra el nombre de los clientes que **no** hayan realizado pagos junto con el nombre de sus representantes de ventas.
+const queryAboutTable19 = document.querySelector("#queryAboutTable19")
+queryAboutTable19.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable19.children
+    if(!report__container.innerHTML){
+        let data = await getClientNotPayWithSalasManager();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
                         <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
                         <p><b>codigo_empleado: </b>${val.codigo_empleado}</p>
                         <p><b>nombre_empleado: </b>${val.nombre_empleado}</p>
