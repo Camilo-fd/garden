@@ -71,35 +71,19 @@ export const getListEmployeesWithBoss = async () => {
     let dataEmployees = await getEmployeesCodeOffice();
     let dataUpdate = [];
 
-    // for (let employee of dataEmployees) {
-    //     if (employee.employee_code === employee.code_boss){
-    //         dataUpdate.push({
-    //             nombre: employee.name,
-    //             codigo_jefe: employee.code_boss,
-    //             codigo_empleado: employee.employee_code
-    //         })
-    //     } else if (employee.code_boss !== null){
-    //         dataUpdate.push({
-    //             nombre: employee.name,
-    //             codigo_jefe: employee.code_boss,
-    //             codigo_empleado: employee.employee_code
-    //         })
-    //     }
-    // }
-
-    // for (let i = 0; i < dataEmployees.length; i++) {
-    //     if (dataEmployees[i].code_boss === null) {
-    //         dataUpdate.push({
-    //             nombre: "null"
-    //         })
-    //     }else if (dataEmployees[i].code_boss === dataEmployees[i].employee_code){
-    //         dataUpdate.push({
-    //             nombre: dataEmployees[i].name,
-    //             codigo_jefe: dataEmployees[i].code_boss,
-    //             codigo_empleado: dataEmployees[i].employee_code
-    //         })
-    //     }
-    // }
-    
+    for (let i = 0; i < dataEmployees.length; i++){
+        if (dataEmployees[i].code_boss == null){
+            dataUpdate.push({
+                employe_name: dataEmployees[i].name,
+                code_boss: dataEmployees[i].code_boss
+            })
+        } else {
+            dataUpdate.push({
+                employe_name: dataEmployees[i].name,
+                code_boss: dataEmployees[i].code_boss,
+                boss_name: dataEmployees[(dataEmployees[i].code_boss) - 1].name
+            })
+        }
+    }
     return dataUpdate;
 }
