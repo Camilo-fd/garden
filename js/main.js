@@ -3,23 +3,24 @@
 //     getAllOfficesFromSpainCityAndMovil
 // } from "./module/offices.js";
 
-// import {
-//     getAllEmployeesWithBossAndCodeSever,
-//     getBossFullNameAndEmail,
-//     getBossFullNameAndEmployees
-// } from "./module/employees.js";
-
 import {
-    getAllClientsSpain,
-    getAllClientsMadridAndRepresentative,
-    getClientAndSaleAgentFullName,
-    getClientPayWithSalasManager,
-    getClientNotPayWithSalasManager,
-    getClientPayWithSalasManagerAndCity,
-    getClientNotPayWithSalasManagerAndCity,
-    getOfficesClientsInFuenlabrada,
-    getListClientsAndEmployeesWithOffice
-} from "./module/clients.js";
+    getAllEmployeesWithBossAndCodeSever,
+    getBossFullNameAndEmail,
+    getBossFullNameAndEmployees,
+    getListEmployeesWithBoss 
+} from "./module/employees.js";
+
+// import {
+//     getAllClientsSpain,
+//     getAllClientsMadridAndRepresentative,
+//     getClientAndSaleAgentFullName,
+//     getClientPayWithSalasManager,
+//     getClientNotPayWithSalasManager,
+//     getClientPayWithSalasManagerAndCity,
+//     getClientNotPayWithSalasManagerAndCity,
+//     getOfficesClientsInFuenlabrada,
+//     getListClientsAndEmployeesWithOffice
+// } from "./module/clients.js";
 
 // import {
 //     getAllStatusOrder,
@@ -66,4 +67,5 @@ import {
 // console.log(await getClientPayWithSalasManagerAndCity()); // EJERCICIO 4.
 // console.log(await getClientNotPayWithSalasManagerAndCity()); // EJERCICIO 5.
 // console.log(await getOfficesClientsInFuenlabrada()); // EJERCICIO 6.
-console.log(await getListClientsAndEmployeesWithOffice()); // EJERCICIO 7.
+// console.log(await getListClientsAndEmployeesWithOffice()); // EJERCICIO 7.
+console.log(await getListEmployeesWithBoss()); // EJERCICIO 8.
