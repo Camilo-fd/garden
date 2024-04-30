@@ -30,6 +30,7 @@ import {getListClientsAndEmployeesWithOffice} from "./module/clients.js"; // EJE
 import {getListEmployeesWithBoss} from "./module/employees.js"; // EJERCICIO 8
 import {getAllEmployeesAndBossesOfTheBosses} from "./module/employees.js"; // EJERCICIO 9
 import {getNameClientsNotDeliveredOrder} from "./module/clients.js"; // EJERCICIO 10
+import {getGamasProductos} from "./module/clients.js"; // EJERCICIO 11
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -745,6 +746,33 @@ queryAboutTable26.addEventListener("click", async(e)=>{
                 <div class="card__body">
                     <div class="body__marck">
                         <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+const queryAboutTable27 = document.querySelector("#queryAboutTable27")
+queryAboutTable27.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable27.children
+    if(!report__container.innerHTML){
+        let data = await getGamasProductos();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>gama_producto: </b>${val.gama_producto}</p>
                     </div>
                 </div>
             </div>

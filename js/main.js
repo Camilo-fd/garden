@@ -73,5 +73,5 @@ import {
 // console.log(await getListClientsAndEmployeesWithOffice()); // EJERCICIO 7.
 // console.log(await getListEmployeesWithBoss()); // EJERCICIO 8.
 // console.log(await getAllEmployeesAndBossesOfTheBosses()); // EJERCICIO 9.
-console.log(await getNameClientsNotDeliveredOrder()); // EJERCICIO 10.
-// console.log(await getGamasProductos()); // EJERCICIO 11.
+// console.log(await getNameClientsNotDeliveredOrder()); // EJERCICIO 10.
+console.log(await getGamasProductos()); // EJERCICIO 11.
