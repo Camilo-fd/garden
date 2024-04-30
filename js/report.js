@@ -21,6 +21,7 @@ import {getAllClientsMadridAndRepresentative} from "./module/clients.js"; // EJE
 
 // PARTE 2 CONSULTAS - MULTITABLAS
 import {getClientAndSaleAgentFullName} from "./module/clients.js"; // EJERCICIO 1
+import {getClientPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 2
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -485,6 +486,35 @@ queryAboutTable17.addEventListener("click", async(e)=>{
                     <div class="body__marck">
                         <p><b>nombre: </b>${val.nombre}</p>
                         <p><b>representante ventas: </b>${val.nombre_manager}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+const queryAboutTable18 = document.querySelector("#queryAboutTable18")
+queryAboutTable18.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable18.children
+    if(!report__container.innerHTML){
+        let data = await getClientPayWithSalasManager();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>codigo_cliente: </b>${val.codigo_cliente}</p>
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>codigo_empleado: </b>${val.codigo_empleado}</p>
+                        <p><b>nombre_empleado: </b>${val.nombre_empleado}</p>
                     </div>
                 </div>
             </div>
