@@ -27,6 +27,7 @@ import {getClientPayWithSalasManagerAndCity} from "./module/clients.js"; // EJER
 import {getClientNotPayWithSalasManagerAndCity} from "./module/clients.js"; // EJERCICIO 5
 import {getOfficesClientsInFuenlabrada} from "./module/clients.js"; // EJERCICIO 6
 import {getListClientsAndEmployeesWithOffice} from "./module/clients.js"; // EJERCICIO 7
+import {getListEmployeesWithBoss} from "./module/employees.js"; // EJERCICIO 8
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -659,6 +660,34 @@ queryAboutTable23.addEventListener("click", async(e)=>{
                         <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
                         <p><b>nombre_manager: </b>${val.nombre_manager}</p>
                         <p><b>ciudad: </b>${val.ciudad}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 8. Devuelve un listado con el nombre de los empleados junto con el nombre de sus jefes.
+const queryAboutTable24 = document.querySelector("#queryAboutTable24")
+queryAboutTable24.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable24.children
+    if(!report__container.innerHTML){
+        let data = await getListEmployeesWithBoss();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre_empleado: </b>${val.employe_name}</p>
+                        <p><b>codigo_jefe: </b>${val.code_boss}</p>
+                        <p><b>nombre_jefe: </b>${val.boss_name}</p>
                     </div>
                 </div>
             </div>
