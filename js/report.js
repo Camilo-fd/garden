@@ -29,6 +29,7 @@ import {getOfficesClientsInFuenlabrada} from "./module/clients.js"; // EJERCICIO
 import {getListClientsAndEmployeesWithOffice} from "./module/clients.js"; // EJERCICIO 7
 import {getListEmployeesWithBoss} from "./module/employees.js"; // EJERCICIO 8
 import {getAllEmployeesAndBossesOfTheBosses} from "./module/employees.js"; // EJERCICIO 9
+import {getNameClientsNotDeliveredOrder} from "./module/clients.js"; // EJERCICIO 10
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -718,6 +719,32 @@ queryAboutTable25.addEventListener("click", async(e)=>{
                         <p><b>codigo_jefe: </b>${val.code_boss}</p>
                         <p><b>nombre_jefe: </b>${val.boss_name}</p>
                         <p><b>Codigo_jefe_del_jefe: </b>${val.code_boss_from_boss}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+const queryAboutTable26 = document.querySelector("#queryAboutTable26")
+queryAboutTable26.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable26.children
+    if(!report__container.innerHTML){
+        let data = await getNameClientsNotDeliveredOrder();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
                     </div>
                 </div>
             </div>
