@@ -24,6 +24,7 @@ import {getClientAndSaleAgentFullName} from "./module/clients.js"; // EJERCICIO 
 import {getClientPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 2
 import {getClientNotPayWithSalasManager} from "./module/clients.js"; // EJERCICIO 3
 import {getClientPayWithSalasManagerAndCity} from "./module/clients.js"; // EJERCICIO 4
+import {getClientNotPayWithSalasManagerAndCity} from "./module/clients.js"; // EJERCICIO 5
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -560,6 +561,34 @@ queryAboutTable20.addEventListener("click", async(e)=>{
     let [,report__container] = queryAboutTable20.children
     if(!report__container.innerHTML){
         let data = await getClientPayWithSalasManagerAndCity();
+        let plantilla = "";
+        console.log(data);
+        data.forEach(val => {
+            plantilla += `
+                <div class="report__card">
+                <div class="card__title">
+                    <div>CLIENTES</div>
+                </div>
+                <div class="card__body">
+                    <div class="body__marck">
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>nombre_manager: </b>${val.nombre_manager}</p>
+                        <p><b>ciudad: </b>${val.ciudad}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+        });
+        report__container.innerHTML = plantilla;
+    }
+})
+
+// 5. Devuelve el nombre de los clientes que **no** hayan hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+const queryAboutTable21 = document.querySelector("#queryAboutTable21")
+queryAboutTable21.addEventListener("click", async(e)=>{
+    let [,report__container] = queryAboutTable21.children
+    if(!report__container.innerHTML){
+        let data = await getClientNotPayWithSalasManagerAndCity();
         let plantilla = "";
         console.log(data);
         data.forEach(val => {

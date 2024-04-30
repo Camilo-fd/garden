@@ -67,8 +67,8 @@ import {
 // console.log(await getClientAndSaleAgentFullName()); // EJERCICIO 1.
 // console.log(await getClientPayWithSalasManager()); // EJERCICIO 2.
 // console.log(await getClientNotPayWithSalasManager()); // EJERCICIO 3.
-console.log(await getClientPayWithSalasManagerAndCity()); // EJERCICIO 4.
-// console.log(await getClientNotPayWithSalasManagerAndCity()); // EJERCICIO 5.
+// console.log(await getClientPayWithSalasManagerAndCity()); // EJERCICIO 4.
+console.log(await getClientNotPayWithSalasManagerAndCity()); // EJERCICIO 5.
 // console.log(await getOfficesClientsInFuenlabrada()); // EJERCICIO 6.
 // console.log(await getListClientsAndEmployeesWithOffice()); // EJERCICIO 7.
 // console.log(await getListEmployeesWithBoss()); // EJERCICIO 8.
