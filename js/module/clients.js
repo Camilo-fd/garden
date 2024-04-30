@@ -2,6 +2,8 @@ import{ getEmployeesSaleAgent, getEmployeesCodeOffice } from './employees.js'
 import{ getAllPayments } from './payments.js'
 import{ getAllOffices } from './offices.js'
 import { getAllRequests } from './requests.js'
+import { getAllProducts } from './product.js'
+import { getAllRequestDetails } from './request_details.js'
 
 // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
@@ -238,6 +240,38 @@ export const getNameClientsNotDeliveredOrder = async() => {
             };
         };
     };
+    dataUpdate = Array.from(dataUpdate).map( val => JSON.parse(val))
+    return dataUpdate
+}
+
+// 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+
+export const getGamasProductos = async() => {
+    let resClients = await fetch("http://localhost:5501/clients")
+    let dataClients = await resClients.json();
+    let dataRequests = await getAllRequests();
+    let dataRequestDatils = await getAllRequestDetails();
+    let dataProducts = await getAllProducts();
+    let dataUpdate = new Set();
+
+    for (let cliente of dataClients) {
+        for (let request of dataRequests) {
+            if (cliente.client_code === request.code_client) {
+                for (let request_details of dataRequestDatils) {
+                    if (request.code_request === request_details.code_request) {
+                        for (let product of dataProducts) {
+                            if (request_details.product_code === product.code_product) {
+                                dataUpdate.add(JSON.stringify({
+                                    nombre_cliente: cliente.client_name,
+                                    gama_producto: product.gama
+                                }))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     dataUpdate = Array.from(dataUpdate).map( val => JSON.parse(val))
     return dataUpdate
 }

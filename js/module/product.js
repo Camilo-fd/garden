@@ -36,4 +36,10 @@ export const getProductGamaAnd100Units2 = async() =>{
     return dataUpdate
 }
 
+// CONSULTAs PARTE 2.
 
+export const getAllProducts = async() => {
+    let res = await fetch("http://localhost:5506/products");
+    let data = await res.json();
+    return data;
+}
