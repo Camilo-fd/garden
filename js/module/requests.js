@@ -120,3 +120,11 @@ export const getDeliveryRequest = async() => {
     })
     return dataUpdated;
 }
+
+// CONSULTAs PARTE 2.
+
+export const getAllRequests = async() => {
+    let res = await fetch("http://localhost:5508/requests");
+    let data = await res.json();
+    return data;
+}

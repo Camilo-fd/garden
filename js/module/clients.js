@@ -1,6 +1,7 @@
 import{ getEmployeesSaleAgent, getEmployeesCodeOffice } from './employees.js'
 import{ getAllPayments } from './payments.js'
 import{ getAllOffices } from './offices.js'
+import { getAllRequests } from './requests.js'
 
 // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
@@ -215,5 +216,28 @@ export const getListClientsAndEmployeesWithOffice = async() => {
         }
     }
 
+    return dataUpdate
+}
+
+// 10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
+
+export const getNameClientsNotDeliveredOrder = async() => {
+    let resClients = await fetch("http://localhost:5501/clients")
+    let dataClients = await resClients.json();
+    let dataRequests = await getAllRequests();
+    let dataUpdate = new Set();
+
+    for (let cliente of dataClients) {
+        for (let request of dataRequests) {
+            if (cliente.client_code === request.code_client) {
+                if (request.date_delivery === null || request.date_delivery < request.date_wait) {
+                    dataUpdate.add(JSON.stringify({
+                        nombre_cliente: cliente.client_name
+                    }));
+                };
+            };
+        };
+    };
+    dataUpdate = Array.from(dataUpdate).map( val => JSON.parse(val))
     return dataUpdate
 }
