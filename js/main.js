@@ -23,7 +23,8 @@ import {
     getListClientsAndEmployeesWithOffice,
     getNameClientsNotDeliveredOrder,
     getGamasProductos,
-    getClientsNotPay
+    getClientsNotPay,
+    getClientsNotRequest
 } from "./module/clients.js";
 
 import {
@@ -79,4 +80,6 @@ import {
 
 // PARTE 3 CONSULTAS - MULTITABLAS EXTERNAS
 
-console.log(await getClientsNotPay());
+// console.log(await getClientsNotPay()); // EJERCICIO 1.
+// console.log( await getClientsNotRequest()); // EJERCICIO 2.
+

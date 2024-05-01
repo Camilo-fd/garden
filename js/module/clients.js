@@ -304,3 +304,29 @@ export const getClientsNotPay = async() => {
     
     return dataUpdate
 }
+
+// 2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
+
+export const getClientsNotRequest = async() => {
+    let resClients = await fetch("http://localhost:5501/clients")
+    let dataClients = await resClients.json();
+    let dataRequests = await getAllRequests();
+    let dataUpdate = [];
+
+    for (let cliente of dataClients) {
+        let bandera = false;
+        for (let request of dataRequests) {
+            if (cliente.client_code === request.code_client) {
+                bandera = true;
+            }
+        }
+        if (!bandera) {
+            dataUpdate.push({
+                nombre_cliente: cliente.client_name,
+                codigo_cliente: cliente.client_code
+            })
+        }
+    }
+
+    return dataUpdate
+}
