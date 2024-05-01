@@ -275,3 +275,32 @@ export const getGamasProductos = async() => {
     dataUpdate = Array.from(dataUpdate).map( val => JSON.parse(val))
     return dataUpdate
 }
+
+
+// CONSULTAS PARTE 3.
+
+// 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+
+export const getClientsNotPay = async() => {
+    let resClients = await fetch("http://localhost:5501/clients")
+    let dataClients = await resClients.json();
+    let dataPayments = await getAllPayments();
+    let dataUpdate = [];
+
+    for (let cliente of dataClients) {
+        let bandera = false;
+        for (let payment of dataPayments) {
+            if (cliente.client_code === payment.code_client) {
+                bandera = true;
+            }
+        }
+        if (!bandera) {
+            dataUpdate.push({
+                nombre_cliente: cliente.client_name,
+                codigo_cliente: cliente.client_code
+            })
+        }
+    }
+    
+    return dataUpdate
+}

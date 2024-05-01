@@ -1,7 +1,7 @@
-// import {
-//     getAllOfficeCodeAndCity,
-//     getAllOfficesFromSpainCityAndMovil
-// } from "./module/offices.js";
+import {
+    getAllOfficeCodeAndCity,
+    getAllOfficesFromSpainCityAndMovil
+} from "./module/offices.js";
 
 import {
     getAllEmployeesWithBossAndCodeSever,
@@ -22,26 +22,27 @@ import {
     getOfficesClientsInFuenlabrada,
     getListClientsAndEmployeesWithOffice,
     getNameClientsNotDeliveredOrder,
-    getGamasProductos
+    getGamasProductos,
+    getClientsNotPay
 } from "./module/clients.js";
 
-// import {
-//     getAllStatusOrder,
-//     getOrdersClientsExpectedDateAndDelivery,
-//     getOrdersClientsExpectedDateAndDeliveryBeforeDate,
-//     getrejectedRequestsIn2009,
-//     getDeliveryRequest
-// } from "./module/requests.js";
+import {
+    getAllStatusOrder,
+    getOrdersClientsExpectedDateAndDelivery,
+    getOrdersClientsExpectedDateAndDeliveryBeforeDate,
+    getrejectedRequestsIn2009,
+    getDeliveryRequest
+} from "./module/requests.js";
 
-// import {
-//     getAllPay2008,
-//     getAllPayOptions,
-//     getAllPayOptionsPay
-// } from "./module/payments.js"
+import {
+    getAllPay2008,
+    getAllPayOptions,
+    getAllPayOptionsPay
+} from "./module/payments.js"
 
-// import {
-//     getProductGamaAnd100Units
-// } from "./module/product.js"
+import {
+    getProductGamaAnd100Units
+} from "./module/product.js"
 
 // PARTE 1 CONSULTAS - TABLAS
 
@@ -74,4 +75,8 @@ import {
 // console.log(await getListEmployeesWithBoss()); // EJERCICIO 8.
 // console.log(await getAllEmployeesAndBossesOfTheBosses()); // EJERCICIO 9.
 // console.log(await getNameClientsNotDeliveredOrder()); // EJERCICIO 10.
-console.log(await getGamasProductos()); // EJERCICIO 11.
+// console.log(await getGamasProductos()); // EJERCICIO 11.
+
+// PARTE 3 CONSULTAS - MULTITABLAS EXTERNAS
+
+console.log(await getClientsNotPay());
