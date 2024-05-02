@@ -8,7 +8,8 @@ import {
     getBossFullNameAndEmail,
     getBossFullNameAndEmployees,
     getListEmployeesWithBoss,
-    getAllEmployeesAndBossesOfTheBosses
+    getAllEmployeesAndBossesOfTheBosses,
+    getEmployeesNotOffices
 } from "./module/employees.js";
 
 import {
@@ -83,4 +84,5 @@ import {
 
 // console.log(await getClientsNotPay()); // EJERCICIO 1.
 // console.log( await getClientsNotRequest()); // EJERCICIO 2.
-console.log(await getClientsNotPayAndRequest());
+// console.log(await getClientsNotPayAndRequest()); // EJERCICIO 3.
+console.log(await getEmployeesNotOffices()); // EJERCICIO 4.

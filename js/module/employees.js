@@ -1,3 +1,5 @@
+import { getAllOffices } from './offices.js'
+
 // 3. Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7.
 
 export const getAllEmployeesWithBossAndCodeSever = async() => {
@@ -118,4 +120,31 @@ export const getAllEmployeesAndBossesOfTheBosses = async () => {
         }
     }
     return employeesData;
+}
+
+// CONSULTAS PARTE 3.
+
+// 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
+
+export const getEmployeesNotOffices = async() => {
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataOffices = await getAllOffices();
+    let dataUpdate = [];
+
+    for (let employee of dataEmployees) {
+        let hasOffice = false;
+        for (let office of dataOffices) {
+            if (employee.code_office === office.code_office) {
+                hasOffice = true;
+            }
+        }
+        if (!hasOffice) {
+            dataUpdate.push({
+                nombre_empleado: employee.name,
+                codigo_oficina: null
+            });
+        }
+    }
+
+    return dataUpdate;
 }
