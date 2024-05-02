@@ -174,3 +174,38 @@ export const getEmployesNotClients = async() => {
 
     return dataUpdate;
 }
+
+// 6. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado junto con los datos de la oficina donde trabajan.
+
+export const getEmployesNotClientsAndOffices = async() => {
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataClients = await getAllClients();
+    let dataOffices = await getAllOffices();
+    let dataUpdate = [];
+
+    for (let employee of dataEmployees) {
+        let bandera = false;
+        for (let client of dataClients) {
+            if (employee.employee_code === client.code_employee_sales_manager) {
+                bandera = true;
+            }
+        }
+        if (!bandera) {
+            for (let office of dataOffices) {
+                if (employee.code_office === office.code_office) {
+                    dataUpdate.push({
+                        nombre_empleado: employee.name,
+                        codigo_empleado: employee.employee_code,
+                        datos_officina: {
+                            codigo_officina: employee.code_office,
+                            ciudad: office.city,
+                            pais: office.country
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    return dataUpdate;
+}
