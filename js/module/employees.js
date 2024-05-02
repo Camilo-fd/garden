@@ -1,4 +1,5 @@
 import { getAllOffices } from './offices.js'
+import { getAllClients } from './clients.js'
 
 // 3. Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7.
 
@@ -142,6 +143,31 @@ export const getEmployeesNotOffices = async() => {
             dataUpdate.push({
                 nombre_empleado: employee.name,
                 codigo_oficina: null
+            });
+        }
+    }
+
+    return dataUpdate;
+}
+
+// 5. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado.
+
+export const getEmployesNotClients = async() => {
+    let dataEmployees = await getEmployeesCodeOffice();
+    let dataClients = await getAllClients();
+    let dataUpdate = [];
+
+    for (let employee of dataEmployees) {
+        let bandera = false;
+        for (let client of dataClients) {
+            if (employee.employee_code === client.code_employee_sales_manager) {
+                bandera = true;
+            }
+        }
+        if (!bandera) {
+            dataUpdate.push({
+                nombre_empleado: employee.name,
+                codigo_empleado: employee.employee_code,
             });
         }
     }

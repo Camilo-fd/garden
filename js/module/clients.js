@@ -279,6 +279,13 @@ export const getGamasProductos = async() => {
 
 // CONSULTAS PARTE 3.
 
+export const getAllClients = async() => {
+    let resClients = await fetch("http://localhost:5501/clients")
+    let dataClients = await resClients.json();
+    return dataClients;
+}
+
+
 // 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
 
 export const getClientsNotPay = async() => {
