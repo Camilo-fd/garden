@@ -330,3 +330,13 @@ export const getClientsNotRequest = async() => {
 
     return dataUpdate
 }
+
+// 3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido
+
+export const getClientsNotPayAndRequest = async () => {
+    let dataClientsNotPay = await getClientsNotPay();
+    let dataClientsNotRequest = await getClientsNotRequest();
+
+    let dataUpdate = dataClientsNotPay.concat('CLIENTES NO PEDIDO:',dataClientsNotRequest);
+    return dataUpdate;
+};

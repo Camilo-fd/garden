@@ -24,7 +24,8 @@ import {
     getNameClientsNotDeliveredOrder,
     getGamasProductos,
     getClientsNotPay,
-    getClientsNotRequest
+    getClientsNotRequest,
+    getClientsNotPayAndRequest
 } from "./module/clients.js";
 
 import {
@@ -82,4 +83,4 @@ import {
 
 // console.log(await getClientsNotPay()); // EJERCICIO 1.
 // console.log( await getClientsNotRequest()); // EJERCICIO 2.
-
+console.log(await getClientsNotPayAndRequest());
