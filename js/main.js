@@ -51,7 +51,7 @@ import {
 
 // PARTE 1 CONSULTAS - TABLAS
 
-// console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
+console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
 // console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.
 // console.log(await getAllEmployeesWithBossAndCodeSever()); // EJERCICIO 3.
 // console.log(await getBossFullNameAndEmail());  // EJERCICIO 4.
@@ -89,4 +89,4 @@ import {
 // console.log(await getClientsNotPayAndRequest()); // EJERCICIO 3.
 // console.log(await getEmployeesNotOffices()); // EJERCICIO 4.
 // console.log(await getEmployesNotClients()); // EJERCICIO 5.
-console.log(await getEmployesNotClientsAndOffices()); // EJERCICIO 6.
+// console.log(await getEmployesNotClientsAndOffices()); // EJERCICIO 6.
