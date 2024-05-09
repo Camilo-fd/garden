@@ -1,5 +1,5 @@
 import { 
-    getAllOfficeCodeAndCity
+    getAllOfficeCodeAndCity,
 } from '../module/offices.js'
 
 export class Mycard extends HTMLElement {
@@ -13,8 +13,9 @@ export class Mycard extends HTMLElement {
     
     async getAllOfficeCodeAndCityDesing() {
         let data = await getAllOfficeCodeAndCity()
+        console.log(JSON.stringify(data, null, 4));
         data.forEach(val => {
-            this.shadowRoot.innerHTML = /*html*/ `
+            this.shadowRoot.innerHTML += /*html*/ `
                 <div class="report__card">
                     <div class="card__title">
                         <div>CLIENTES</div>
@@ -29,9 +30,11 @@ export class Mycard extends HTMLElement {
             `
         })
     }
+
     static get observedAttributes() {
         return ["logic"];
     }
+
     attributeChangedCallback(name, old, now) {
         if(name=="logic" && now=="office_1") this.getAllOfficeCodeAndCityDesing()
     }
