@@ -16,6 +16,12 @@ btn.forEach(val =>{
                 <my-details logic="office_2" text="2. Devuelve un listado con la ciudad y el teléfono de las oficinas de España."></my-details>            
             `;
         }
+
+        if(e.target.innerHTML=="employees"){
+            report__details.innerHTML = /*html*/`
+            <my-details logic="office_3" text="3. Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7."></my-details>
+            `;
+        }
     });
 });
 

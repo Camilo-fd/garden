@@ -1,7 +1,11 @@
 import { 
     getAllOfficeCodeAndCity,
-    getAllOfficesFromSpainCityAndMovil
+    getAllOfficesFromSpainCityAndMovil,
 } from '../module/offices.js'
+
+import {
+    getAllEmployeesWithBossAndCodeSever
+} from '../module/employees.js'
 
 export class Mycard extends HTMLElement {
     constructor() {
@@ -12,6 +16,7 @@ export class Mycard extends HTMLElement {
         `
     }
     
+    // CONSULTA #1
     async getAllOfficeCodeAndCityDesing() {
         let data = await getAllOfficeCodeAndCity()
         console.log(JSON.stringify(data, null, 4));
@@ -32,6 +37,7 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTA #2
     async getAllOfficesFromSpainCityAndMovilDesing() {
         let data = await getAllOfficesFromSpainCityAndMovil()
         console.log(JSON.stringify(data, null, 4));
@@ -52,6 +58,28 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTA #3
+    async getAllEmployeesWithBossAndCodeSeverDesing() {
+        let data = await getAllEmployeesWithBossAndCodeSever()
+        console.log(JSON.stringify(data, null, 4));
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
+                        <p><b>apellidos: </b>${val.apellidos}</p>
+                        <p><b>email: </b>${val.email}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -59,5 +87,6 @@ export class Mycard extends HTMLElement {
     attributeChangedCallback(name, old, now) {
         if(name=="logic" && now=="office_1") this.getAllOfficeCodeAndCityDesing()
         if(name=="logic" && now=="office_2") this.getAllOfficesFromSpainCityAndMovilDesing()
+        if(name=="logic" && now=="office_3") this.getAllEmployeesWithBossAndCodeSeverDesing()
     }
 }
