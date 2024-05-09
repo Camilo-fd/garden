@@ -1,57 +1,57 @@
-import {
-    getAllOfficeCodeAndCity,
-    getAllOfficesFromSpainCityAndMovil
-} from "./module/offices.js";
+// import {
+//     getAllOfficeCodeAndCity,
+//     getAllOfficesFromSpainCityAndMovil
+// } from "./module/offices.js";
 
-import {
-    getAllEmployeesWithBossAndCodeSever,
-    getBossFullNameAndEmail,
-    getBossFullNameAndEmployees,
-    getListEmployeesWithBoss,
-    getAllEmployeesAndBossesOfTheBosses,
-    getEmployeesNotOffices,
-    getEmployesNotClients,
-    getEmployesNotClientsAndOffices
-} from "./module/employees.js";
+// import {
+//     getAllEmployeesWithBossAndCodeSever,
+//     getBossFullNameAndEmail,
+//     getBossFullNameAndEmployees,
+//     getListEmployeesWithBoss,
+//     getAllEmployeesAndBossesOfTheBosses,
+//     getEmployeesNotOffices,
+//     getEmployesNotClients,
+//     getEmployesNotClientsAndOffices
+// } from "./module/employees.js";
 
-import {
-    getAllClientsSpain,
-    getAllClientsMadridAndRepresentative,
-    getClientAndSaleAgentFullName,
-    getClientPayWithSalasManager,
-    getClientNotPayWithSalasManager,
-    getClientPayWithSalasManagerAndCity,
-    getClientNotPayWithSalasManagerAndCity,
-    getOfficesClientsInFuenlabrada,
-    getListClientsAndEmployeesWithOffice,
-    getNameClientsNotDeliveredOrder,
-    getGamasProductos,
-    getClientsNotPay,
-    getClientsNotRequest,
-    getClientsNotPayAndRequest
-} from "./module/clients.js";
+// import {
+//     getAllClientsSpain,
+//     getAllClientsMadridAndRepresentative,
+//     getClientAndSaleAgentFullName,
+//     getClientPayWithSalasManager,
+//     getClientNotPayWithSalasManager,
+//     getClientPayWithSalasManagerAndCity,
+//     getClientNotPayWithSalasManagerAndCity,
+//     getOfficesClientsInFuenlabrada,
+//     getListClientsAndEmployeesWithOffice,
+//     getNameClientsNotDeliveredOrder,
+//     getGamasProductos,
+//     getClientsNotPay,
+//     getClientsNotRequest,
+//     getClientsNotPayAndRequest
+// } from "./module/clients.js";
 
-import {
-    getAllStatusOrder,
-    getOrdersClientsExpectedDateAndDelivery,
-    getOrdersClientsExpectedDateAndDeliveryBeforeDate,
-    getrejectedRequestsIn2009,
-    getDeliveryRequest
-} from "./module/requests.js";
+// import {
+//     getAllStatusOrder,
+//     getOrdersClientsExpectedDateAndDelivery,
+//     getOrdersClientsExpectedDateAndDeliveryBeforeDate,
+//     getrejectedRequestsIn2009,
+//     getDeliveryRequest
+// } from "./module/requests.js";
 
-import {
-    getAllPay2008,
-    getAllPayOptions,
-    getAllPayOptionsPay
-} from "./module/payments.js"
+// import {
+//     getAllPay2008,
+//     getAllPayOptions,
+//     getAllPayOptionsPay
+// } from "./module/payments.js"
 
-import {
-    getProductGamaAnd100Units
-} from "./module/product.js"
+// import {
+//     getProductGamaAnd100Units
+// } from "./module/product.js"
 
 // PARTE 1 CONSULTAS - TABLAS
 
-console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
+// console.log(await getAllOfficeCodeAndCity()); // EJERCICIO 1.
 // console.log(await getAllOfficesFromSpainCityAndMovil()); // EJERCICIO 2.
 // console.log(await getAllEmployeesWithBossAndCodeSever()); // EJERCICIO 3.
 // console.log(await getBossFullNameAndEmail());  // EJERCICIO 4.

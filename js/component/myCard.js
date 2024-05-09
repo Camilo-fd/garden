@@ -7,12 +7,12 @@ export class Mycard extends HTMLElement {
         super();
         this.attachShadow({ mode: "open"});
         this.shadowRoot.innerHTML = /*html*/ `
-        <link rel="stylesheet" href="../css/myCard.css">
+            <link rel="stylesheet" href="../css/myCard.css">
         `
     }
     
     async getAllOfficeCodeAndCityDesing() {
-        let data = await getAllOfficeCodeAndCity()   
+        let data = await getAllOfficeCodeAndCity()
         data.forEach(val => {
             this.shadowRoot.innerHTML = /*html*/ `
                 <div class="report__card">
@@ -21,8 +21,8 @@ export class Mycard extends HTMLElement {
                     </div>
                     <div class="card__body">
                         <div class="body__marck">
-                        <p><b>apellidos: </b>${val.country}</p>
-                        <p><b>nombre: </b>${val.city}</p>
+                        <p><b>Codigo: </b>${val.codigo}</p>
+                        <p><b>Ciudad: </b>${val.ciudad}</p>
                         </div>
                     </div>
                 </div>
@@ -33,6 +33,6 @@ export class Mycard extends HTMLElement {
         return ["logic"];
     }
     attributeChangedCallback(name, old, now) {
-        if(name=="getAllOfficeCodeAndCity" && now=="offices_1") this.getAllOfficeCodeAndCityDesing()
+        if(name=="logic" && now=="office_1") this.getAllOfficeCodeAndCityDesing()
     }
 }

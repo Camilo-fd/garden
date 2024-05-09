@@ -28,9 +28,11 @@ export class Mydetails extends HTMLElement{
     connectedCallback(){
         this.myCard.setAttribute("logic", Mydetails.query)
     }
+
     static get observedAttributes() {
         return ["logic", "text"];
     }
+
     attributeChangedCallback(name, old, now) {
         if(name == "logic") Mydetails.query = now
         if(name == "text") this.marquee.textContent = now
