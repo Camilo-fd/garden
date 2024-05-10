@@ -24,6 +24,12 @@ btn.forEach(val =>{
             <my-details logic="employee_5" text="5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas."></my-details>
             `;
         }
+
+        if(e.target.innerHTML=="clients"){
+            report__details.innerHTML = /*html*/`
+            <my-details logic="cliente_6" text="6. Devuelve un listado con el nombre de los todos los clientes españoles."></my-details>
+            `;
+        }
     });
 });
 

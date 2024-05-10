@@ -9,6 +9,10 @@ import {
     getBossFullNameAndEmployees
 } from '../module/employees.js'
 
+import {
+    getAllClientsSpain
+} from '../module/clients.js'
+
 export class Mycard extends HTMLElement {
     constructor() {
         super();
@@ -98,26 +102,45 @@ export class Mycard extends HTMLElement {
         `
     }
 
-        // CONSULTA #5
-        async getBossFullNameAndEmployeesDesing() {
-            let data = await getBossFullNameAndEmployees()
-            data.forEach(val => {
-                this.shadowRoot.innerHTML += /*html*/ `
-                    <div class="report__card">
-                        <div class="card__title">
-                            <div>CLIENTES</div>
-                        </div>
-                        <div class="card__body">
-                            <div class="body__marck">
-                            <p><b>nombre: </b>${val.nombre}</p>
-                            <p><b>apellidos: </b>${val.apellidos}</p>
-                            <p><b>puesto: </b>${val.position}</p>
-                            </div>
+    // CONSULTA #5
+    async getBossFullNameAndEmployeesDesing() {
+        let data = await getBossFullNameAndEmployees()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
+                        <p><b>apellidos: </b>${val.apellidos}</p>
+                        <p><b>puesto: </b>${val.position}</p>
                         </div>
                     </div>
-                `
-            })
-        }
+                </div>
+            `
+        })
+    }
+
+    // CONSULTA #6
+    async getAllClientsSpainDesing() {
+        let data = await getAllClientsSpain()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
 
     static get observedAttributes() {
         return ["logic"];
@@ -129,5 +152,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="employee_3") this.getAllEmployeesWithBossAndCodeSeverDesing()
         if(name=="logic" && now=="employee_4") this.getBossFullNameAndEmailDesing()
         if(name=="logic" && now=="employee_5") this.getBossFullNameAndEmployeesDesing()
+        if(name=="logic" && now=="cliente_6") this.getAllClientsSpainDesing()
     }
 }
