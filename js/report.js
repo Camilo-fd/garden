@@ -44,7 +44,8 @@ btn.forEach(val =>{
         if(e.target.innerHTML=="payments"){
             report__details.innerHTML = /*html*/`
             <my-details logic="payment_8" text="8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos. Resuelva la consulta:"></my-details>
-            `;
+            <my-details logic="payment_13" text="13. Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor."></my-details>
+            `
         }
     });
 });

@@ -23,6 +23,8 @@ import {
 
 import {
     getAllPay2008,
+    getAllPayOptions,
+    getAllPayOptionsPay
 } from '../module/payments.js'
 
 export class Mycard extends HTMLElement {
@@ -282,6 +284,27 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTA #13
+    async getAllPayOptionsDesing() {
+        let data = await getAllPayOptions()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>codigo_cliente: </b>${val.codigo_cliente}</p>
+                        <p><b>fecha_pago: </b>${val.fecha_pago}</p>
+                        <p><b>valor: </b>${val.valor}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -299,5 +322,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="request_10") this.getOrdersClientsExpectedDateAndDeliveryBeforeDateDesing()
         if(name=="logic" && now=="request_11") this.getrejectedRequestsIn2009Desing()
         if(name=="logic" && now=="request_12") this.getDeliveryRequestDesing()
+        if(name=="logic" && now=="payment_13") this.getAllPayOptionsDesing()
     }
 }
