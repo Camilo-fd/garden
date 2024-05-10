@@ -17,6 +17,10 @@ import {
     getAllStatusOrder
 } from '../module/requests.js'
 
+import {
+    getAllPay2008
+} from '../module/payments.js'
+
 export class Mycard extends HTMLElement {
     constructor() {
         super();
@@ -157,7 +161,26 @@ export class Mycard extends HTMLElement {
                     </div>
                     <div class="card__body">
                         <div class="body__marck">
-                        <p><b>nombre: </b>${val}</p>
+                        <p><b>Estados_pedido: </b>${val}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
+    // CONSULTA #8
+    async getAllPay2008Desing() {
+        let data = await getAllPay2008()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Codigo_cliente: </b>${val}</p>
                         </div>
                     </div>
                 </div>
@@ -177,5 +200,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="employee_5") this.getBossFullNameAndEmployeesDesing()
         if(name=="logic" && now=="cliente_6") this.getAllClientsSpainDesing()
         if(name=="logic" && now=="request_7") this.getAllStatusOrderDesing()
+        if(name=="logic" && now=="payment_8") this.getAllPay2008Desing()
     }
 }
