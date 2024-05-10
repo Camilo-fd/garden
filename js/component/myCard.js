@@ -14,11 +14,12 @@ import {
 } from '../module/clients.js'
 
 import {
-    getAllStatusOrder
+    getAllStatusOrder,
+    getOrdersClientsExpectedDateAndDelivery
 } from '../module/requests.js'
 
 import {
-    getAllPay2008
+    getAllPay2008,
 } from '../module/payments.js'
 
 export class Mycard extends HTMLElement {
@@ -188,6 +189,28 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTA #9
+    async getOrdersClientsExpectedDateAndDeliveryDesing() {
+        let data = await getOrdersClientsExpectedDateAndDelivery()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>cliente: </b>${val.cliente}</p>
+                        <p><b>pedido: </b>${val.pedido}</p>
+                        <p><b>pedido_espera: </b>${val.pedido_espera}</p>
+                        <p><b>pedido_retraso: </b>${val.pedido_retraso}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -201,5 +224,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="cliente_6") this.getAllClientsSpainDesing()
         if(name=="logic" && now=="request_7") this.getAllStatusOrderDesing()
         if(name=="logic" && now=="payment_8") this.getAllPay2008Desing()
+        if(name=="logic" && now=="request_9") this.getOrdersClientsExpectedDateAndDeliveryDesing()
     }
 }
