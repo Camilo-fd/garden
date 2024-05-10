@@ -30,6 +30,13 @@ btn.forEach(val =>{
             <my-details logic="cliente_6" text="6. Devuelve un listado con el nombre de los todos los clientes españoles."></my-details>
             `;
         }
+
+        if(e.target.innerHTML=="requests"){
+            report__details.innerHTML = /*html*/`
+            <my-details logic="request_7" text="7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
+            "></my-details>
+            `;
+        }
     });
 });
 
