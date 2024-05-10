@@ -35,6 +35,7 @@ btn.forEach(val =>{
             report__details.innerHTML = /*html*/`
             <my-details logic="request_7" text="7. Devuelve un listado con los distintos estados por los que puede pasar un pedido."></my-details>
             <my-details logic="request_9" text="9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo."></my-details>
+            <my-details logic="request_10" text="10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada."></my-details>
             `;
         }
 
