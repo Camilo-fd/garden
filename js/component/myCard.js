@@ -10,7 +10,9 @@ import {
 } from '../module/employees.js'
 
 import {
-    getAllClientsSpain
+    getAllClientsSpain,
+    getAllClientsMadridAndRepresentative,
+    getClientAndSaleAgentFullName
 } from '../module/clients.js'
 
 import {
@@ -26,6 +28,10 @@ import {
     getAllPayOptions,
     getAllPayOptionsPay
 } from '../module/payments.js'
+
+import {
+    getProductGamaAnd100Units
+} from '../module/product.js'
 
 export class Mycard extends HTMLElement {
     constructor() {
@@ -324,6 +330,45 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTA #15
+    async getProductGamaAnd100UnitsDesing() {
+        let data = await getProductGamaAnd100Units()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>name: </b>${val.name}</p>
+                        <p><b>price_sale: </b>${val.price_sale}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
+    // CONSULTA #16
+    async getAllClientsMadridAndRepresentativeDesing() {
+        let data = await getAllClientsMadridAndRepresentative()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -343,5 +388,7 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="request_12") this.getDeliveryRequestDesing()
         if(name=="logic" && now=="payment_13") this.getAllPayOptionsDesing()
         if(name=="logic" && now=="payment_14") this.getAllPayOptionsPayDesing()
+        if(name=="logic" && now=="product_15") this.getProductGamaAnd100UnitsDesing()
+        if(name=="logic" && now=="cliente_16") this.getAllClientsMadridAndRepresentativeDesing()
     }
 }
