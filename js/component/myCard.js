@@ -15,7 +15,8 @@ import {
     getClientAndSaleAgentFullName,
     getClientPayWithSalasManager,
     getClientNotPayWithSalasManager,
-    getClientPayWithSalasManagerAndCity
+    getClientPayWithSalasManagerAndCity,
+    getClientNotPayWithSalasManagerAndCity
 } from '../module/clients.js'
 
 import {
@@ -456,6 +457,27 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTAMULTITABLA #5
+    async getClientNotPayWithSalasManagerAndCityDesing() {
+        let data = await getClientNotPayWithSalasManagerAndCity()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>nombre_manager: </b>${val.nombre_manager}</p>
+                        <p><b>ciudad: </b>${val.ciudad}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -481,5 +503,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="cliente_2.2") this.getClientPayWithSalasManagerDesing()
         if(name=="logic" && now=="cliente_2.3") this.getClientNotPayWithSalasManagerDesing()
         if(name=="logic" && now=="cliente_2.4") this.getClientPayWithSalasManagerAndCityDesing()
+        if(name=="logic" && now=="cliente_2.5") this.getClientNotPayWithSalasManagerAndCityDesing()
     }
 }
