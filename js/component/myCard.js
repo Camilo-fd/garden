@@ -13,7 +13,8 @@ import {
     getAllClientsSpain,
     getAllClientsMadridAndRepresentative,
     getClientAndSaleAgentFullName,
-    getClientPayWithSalasManager
+    getClientPayWithSalasManager,
+    getClientNotPayWithSalasManager
 } from '../module/clients.js'
 
 import {
@@ -370,7 +371,7 @@ export class Mycard extends HTMLElement {
         })
     }
 
-    // CONSULTA #17
+    // CONSULTAMULTITABLA #1
     async getClientAndSaleAgentFullNameDesing() {
         let data = await getClientAndSaleAgentFullName()
         data.forEach(val => {
@@ -390,7 +391,7 @@ export class Mycard extends HTMLElement {
         })
     }
 
-    // CONSULTA #18
+    // CONSULTAMULTITABLA #2
     async getClientPayWithSalasManagerDesing() {
         let data = await getClientPayWithSalasManager()
         data.forEach(val => {
@@ -402,6 +403,27 @@ export class Mycard extends HTMLElement {
                     <div class="card__body">
                         <div class="body__marck">
                         <p><b>codigo_cliente: </b>${val.codigo_cliente}</p>
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>codigo_empleado: </b>${val.codigo_empleado}</p>
+                        <p><b>nombre_empleado: </b>${val.nombre_empleado}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
+    // CONSULTAMULTITABLA #3
+    async getClientNotPayWithSalasManagerDesing() {
+        let data = await getClientNotPayWithSalasManager()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
                         <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
                         <p><b>codigo_empleado: </b>${val.codigo_empleado}</p>
                         <p><b>nombre_empleado: </b>${val.nombre_empleado}</p>
@@ -435,5 +457,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="cliente_16") this.getAllClientsMadridAndRepresentativeDesing()
         if(name=="logic" && now=="cliente_2.1") this.getClientAndSaleAgentFullNameDesing()
         if(name=="logic" && now=="cliente_2.2") this.getClientPayWithSalasManagerDesing()
+        if(name=="logic" && now=="cliente_2.3") this.getClientNotPayWithSalasManagerDesing()
     }
 }
