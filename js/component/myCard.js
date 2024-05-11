@@ -369,6 +369,26 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTA #17
+    async getClientAndSaleAgentFullNameDesing() {
+        let data = await getClientAndSaleAgentFullName()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre: </b>${val.nombre}</p>
+                        <p><b>nombre_manager: </b>${val.nombre_manager}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -390,5 +410,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="payment_14") this.getAllPayOptionsPayDesing()
         if(name=="logic" && now=="product_15") this.getProductGamaAnd100UnitsDesing()
         if(name=="logic" && now=="cliente_16") this.getAllClientsMadridAndRepresentativeDesing()
+        if(name=="logic" && now=="cliente_2.1") this.getClientAndSaleAgentFullNameDesing()
     }
 }
