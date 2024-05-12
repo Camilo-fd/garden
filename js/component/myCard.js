@@ -650,6 +650,27 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTAMULTITABLAEXTERNA #3
+    async getClientsNotPayAndRequestDesing() {
+        let data = await getClientsNotPayAndRequest()
+        if (data && data.length > 0) {
+            data.forEach(val => {
+                this.shadowRoot.innerHTML += /*html*/ `
+                    <div class="report__card">
+                        <div class="card__title">
+                            <div>CLIENTES</div>
+                        </div>
+                        <div class="card__body">
+                            <div class="body__marck">
+                                <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
