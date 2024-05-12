@@ -7,7 +7,8 @@ import {
     getAllEmployeesWithBossAndCodeSever,
     getBossFullNameAndEmail,
     getBossFullNameAndEmployees,
-    getListEmployeesWithBoss
+    getListEmployeesWithBoss,
+    getAllEmployeesAndBossesOfTheBosses
 } from '../module/employees.js'
 
 import {
@@ -543,6 +544,28 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTAMULTITABLA #9
+    async getAllEmployeesAndBossesOfTheBossesDesing() {
+        let data = await getAllEmployeesAndBossesOfTheBosses()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>employe_name: </b>${val.employe_name}</p>
+                        <p><b>code_boss: </b>${val.code_boss}</p>
+                        <p><b>boss_name: </b>${val.boss_name}</p>
+                        <p><b>code_boss_from_boss: </b>${val.code_boss_from_boss}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -572,5 +595,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="cliente_2.6") this.getOfficesClientsInFuenlabradaDesing()
         if(name=="logic" && now=="cliente_2.7") this.getListClientsAndEmployeesWithOfficeDesing()
         if(name=="logic" && now=="employee_2.8") this.getListEmployeesWithBossDesing()
+        if(name=="logic" && now=="employee_2.9") this.getAllEmployeesAndBossesOfTheBossesDesing()
     }
 }
