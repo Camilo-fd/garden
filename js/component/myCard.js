@@ -23,7 +23,9 @@ import {
     getListClientsAndEmployeesWithOffice,
     getNameClientsNotDeliveredOrder,
     getGamasProductos,
-    getClientsNotPay
+    getClientsNotPay,
+    getClientsNotRequest,
+    getClientsNotPayAndRequest
 } from '../module/clients.js'
 
 import {
@@ -628,6 +630,26 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTAMULTITABLAEXTERNA #2
+    async getClientsNotRequestDesing() {
+        let data = await getClientsNotRequest()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>codigo_cliente: </b>${val.codigo_cliente}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -661,5 +683,7 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="cliente_2.10") this.getNameClientsNotDeliveredOrderDesing()
         if(name=="logic" && now=="cliente_2.11") this.getGamasProductosrDesing()
         if(name=="logic" && now=="cliente_3.1") this.getClientsNotPayDesing()
+        if(name=="logic" && now=="cliente_3.2") this.getClientsNotRequestDesing()
+        if(name=="logic" && now=="cliente_3.3") this.getClientsNotPayAndRequestDesing()
     }
 }

@@ -41,6 +41,8 @@ btn.forEach(val =>{
             <my-details logic="cliente_2.10" text="2.10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido."></my-details>
             <my-details logic="cliente_2.11" text="2.11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente."></my-details>
             <my-details logic="cliente_3.1" text="3.1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago."></my-details>
+            <my-details logic="cliente_3.2" text="3.2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido."></my-details>
+            <my-details logic="cliente_3.3" text="3.3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido"></my-details>
             `;
         }
 
