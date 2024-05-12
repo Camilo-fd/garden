@@ -21,7 +21,8 @@ import {
     getClientNotPayWithSalasManagerAndCity,
     getOfficesClientsInFuenlabrada,
     getListClientsAndEmployeesWithOffice,
-    getNameClientsNotDeliveredOrder
+    getNameClientsNotDeliveredOrder,
+    getGamasProductos
 } from '../module/clients.js'
 
 import {
@@ -586,6 +587,26 @@ export class Mycard extends HTMLElement {
         })
     }
 
+    // CONSULTAMULTITABLA #11
+    async getGamasProductosrDesing() {
+        let data = await getGamasProductos()
+        data.forEach(val => {
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>nombre_cliente: </b>${val.nombre_cliente}</p>
+                        <p><b>gama_producto: </b>${val.gama_producto}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -617,5 +638,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="employee_2.8") this.getListEmployeesWithBossDesing()
         if(name=="logic" && now=="employee_2.9") this.getAllEmployeesAndBossesOfTheBossesDesing()
         if(name=="logic" && now=="cliente_2.10") this.getNameClientsNotDeliveredOrderDesing()
+        if(name=="logic" && now=="cliente_2.11") this.getGamasProductosrDesing()
     }
 }
