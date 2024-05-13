@@ -8,7 +8,8 @@ import {
     getBossFullNameAndEmail,
     getBossFullNameAndEmployees,
     getListEmployeesWithBoss,
-    getAllEmployeesAndBossesOfTheBosses
+    getAllEmployeesAndBossesOfTheBosses,
+    getEmployeesNotOffices
 } from '../module/employees.js'
 
 import {
@@ -671,6 +672,24 @@ export class Mycard extends HTMLElement {
         }
     }
 
+    // CONSULTAMULTITABLAEXTERNA #4
+    async getEmployeesNotOfficesDesing() {
+        let data = await getEmployeesNotOffices()
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                        <p><b>Empleados: </b>${"no hay empleados sin officinas associadas"}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        
+    }
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -706,5 +725,7 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="cliente_3.1") this.getClientsNotPayDesing()
         if(name=="logic" && now=="cliente_3.2") this.getClientsNotRequestDesing()
         if(name=="logic" && now=="cliente_3.3") this.getClientsNotPayAndRequestDesing()
+        if(name=="logic" && now=="employee_3.4") this.getEmployeesNotOfficesDesing()
+        
     }
 }

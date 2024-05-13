@@ -146,7 +146,6 @@ export const getEmployeesNotOffices = async() => {
             });
         }
     }
-
     return dataUpdate;
 }
 
