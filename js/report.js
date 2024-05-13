@@ -26,6 +26,7 @@ btn.forEach(val =>{
             <my-details logic="employee_2.9" text="2.9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe."></my-details>
             <my-details logic="employee_3.4" text="3.4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada."></my-details>
             <my-details logic="employee_3.5" text="3.5. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado."></my-details>
+            <my-details logic="employee_3.6" text="3.6. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado junto con los datos de la oficina donde trabajan."></my-details>
             `;
         }
 

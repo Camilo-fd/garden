@@ -10,7 +10,8 @@ import {
     getListEmployeesWithBoss,
     getAllEmployeesAndBossesOfTheBosses,
     getEmployeesNotOffices,
-    getEmployesNotClients
+    getEmployesNotClients,
+    getEmployesNotClientsAndOffices
 } from '../module/employees.js'
 
 import {
@@ -709,6 +710,32 @@ export class Mycard extends HTMLElement {
         
     }
 
+    // CONSULTAMULTITABLAEXTERNA #6
+    async getEmployesNotClientsAndOfficesDesing() {
+        let data = await getEmployesNotClientsAndOffices()
+        data.forEach(val => {
+            let officeData = "";
+            for (let prop in val.datos_officina) {
+                officeData += `<p><b>${prop}: </b>${val.datos_officina[prop]}</p>`;
+            }
+            this.shadowRoot.innerHTML += /*html*/ `
+                <div class="report__card">
+                    <div class="card__title">
+                        <div>CLIENTES</div>
+                    </div>
+                    <div class="card__body">
+                        <div class="body__marck">
+                            <p><b>nombre_empleado: </b>${val.nombre_empleado}</p>
+                            <p><b>codigo_empleado: </b>${val.codigo_empleado}</p>
+                            ${officeData}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+    
+
     static get observedAttributes() {
         return ["logic"];
     }
@@ -746,6 +773,6 @@ export class Mycard extends HTMLElement {
         if(name=="logic" && now=="cliente_3.3") this.getClientsNotPayAndRequestDesing()
         if(name=="logic" && now=="employee_3.4") this.getEmployeesNotOfficesDesing()
         if(name=="logic" && now=="employee_3.5") this.getEmployesNotClientsDesing()
-        
+        if(name=="logic" && now=="employee_3.6") this.getEmployesNotClientsAndOfficesDesing()
     }
 }
